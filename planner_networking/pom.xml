@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>software_masters</groupId>
-  <artifactId>planner_networking</artifactId>
+  <artifactId>planner_graphics</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
