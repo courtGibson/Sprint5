@@ -29,10 +29,10 @@ public class FXTreeView extends Application
         // Create the TreeViewHelper
         TreeViewHelper helper = new TreeViewHelper();
         // Get the Products
+
         ArrayList<TreeItem> products = helper.getProducts(planRoot);
 
 
-         
         // Create the TreeView
         TreeView treeView = new TreeView();
         // Create the Root TreeItem
