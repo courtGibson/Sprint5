@@ -22,14 +22,14 @@ public class FXTreeView extends Application
         // Create the TreeViewHelper
         TreeViewHelper helper = new TreeViewHelper();
         // Get the Products
-        ArrayList<TreeItem> products = helper.getProducts();
+        ArrayList<TreeItem> nodes = helper.getNodes(root);
          
         // Create the TreeView
         TreeView treeView = new TreeView();
         // Create the Root TreeItem
-        TreeItem rootItem = new TreeItem("Vehicles");
+        TreeItem rootItem = new TreeItem(root);
         // Add children to the root
-        rootItem.getChildren().addAll(products);
+        rootItem.getChildren().addAll(nodes);
         // Set the Root Node
         treeView.setRoot(rootItem);
          
