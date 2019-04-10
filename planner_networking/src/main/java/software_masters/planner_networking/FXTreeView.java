@@ -175,7 +175,7 @@ public class FXTreeView extends Application
     	
     	for(int i=0; i<parentNode.getChildren().size(); i++)
     	{
-    		TreeItem newChild = new TreeItem(parentNode.getChildren().get(i).getName());
+    		TreeItem newChild = new TreeItem(parentNode.getChildren().get(i));
     		
     		//newChild.setOnAction(new EventHandler<ActionEvent>()  {
     			//public void handle(ActionEvent e) {

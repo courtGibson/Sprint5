@@ -174,5 +174,11 @@ public class Node implements Serializable
 		}
 		return true;
 	}
+	
+	public String toString()
+	{
+		return this.name;
+		
+	}
 
 }
