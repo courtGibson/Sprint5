@@ -1,6 +1,11 @@
 package software_masters.planner_networking;
 
 import java.util.ArrayList;
+
+import javafx.event.EventHandler;
+import javafx.event.EventType;
+import javafx.scene.input.MouseEvent;
+
 import java.io.Serializable;
 import java.rmi.RemoteException;
 
@@ -180,5 +185,6 @@ public class Node implements Serializable
 		return this.name;
 		
 	}
+
 
 }
