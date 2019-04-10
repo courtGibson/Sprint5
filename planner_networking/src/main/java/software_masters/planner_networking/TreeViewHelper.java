@@ -2,6 +2,9 @@ package software_masters.planner_networking;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.TreeItem;
  
 public class TreeViewHelper 
@@ -37,6 +40,13 @@ public class TreeViewHelper
     	for(int i=0; i<parentNode.getChildren().size(); i++)
     	{
     		TreeItem newChild = new TreeItem(parentNode.getChildren().get(i).getName());
+    		
+    		newChild.setOnAction(new EventHandler<ActionEvent>()  {
+    			public void handle(ActionEvent e) {
+    				System.out.println("Here");
+    			}
+    		});
+    		
     		parentTreeItem.getChildren().add(newChild);
     		getKids(parentNode.getChildren().get(i), newChild);
     		
