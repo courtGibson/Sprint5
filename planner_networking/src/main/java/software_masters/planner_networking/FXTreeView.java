@@ -206,14 +206,14 @@ public class FXTreeView extends Application
 		// Display the Stage
 		primaryStage.show();
 		
-		primaryStage.setOnCloseRequest( event -> {try
+		/*primaryStage.setOnCloseRequest( event -> {try
 		{
 			stop();
 		} catch (RemoteException | NotBoundException e)
 		{
 			
 			e.printStackTrace();
-		}} );
+		}} );*/
 
 	}
 	
@@ -227,6 +227,7 @@ public class FXTreeView extends Application
 	@Override
 	public void stop() throws AccessException, RemoteException, NotBoundException
 	{
+		System.out.println("unbinding server");
 		registry.unbind("PlannerServer");
 		// Unexport; this will also remove us from the RMI runtime
 		UnicastRemoteObject.unexportObject(registry, true);
