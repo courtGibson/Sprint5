@@ -3,13 +3,15 @@
  */
 package software_masters.planner_networking;
 
-/**
+/** 
  * @author lee kendall
  * @author wesley murray
  *
  */
 public class Account
 {
+	
+	//asdf
 
 	/**
 	 * Object keeps track of each user's password, cookie, department, and admin
