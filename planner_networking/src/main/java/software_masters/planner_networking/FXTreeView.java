@@ -15,16 +15,20 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
@@ -36,7 +40,7 @@ public class FXTreeView extends Application
 {
 	VBox root;
 	Text textTop;
-	TextField textFieldCenter;
+	TextArea textFieldCenter;
 	Node planRoot;
 	Node currNode;
 	PlanFile planFile;
@@ -77,7 +81,7 @@ public class FXTreeView extends Application
 			testServer = (Server) registry.lookup("PlannerServer");
 			testClient = new Client(testServer);
 			
-			this.planFile = new PlanFile(null, false, centrePlan);
+			this.planFile = new PlanFile(null, true, centrePlan);
 			planFile.setYear("2019");
 			
 			testClient.login("admin", "admin");
@@ -120,20 +124,24 @@ public class FXTreeView extends Application
 
 		// Create the Text Nodes
 		Text topText = new Text("Plan View");
+		topText.setStyle("-fx-font-size: 40px;");
 		BorderPane.setAlignment(topText, Pos.CENTER);
 		
 		Text leftText = new Text("This is where a tree should be");
 		BorderPane.setAlignment(leftText, Pos.CENTER);
 		BorderPane bpCenter = new BorderPane();
+		//BorderPane bpTop = new BorderPane();
+		
+		
 
 		bp.setCenter(bpCenter);
 		bp.setTop(topText);
 		bp.setLeft(leftText);
 
-		Text topTextBPCenter = new Text("Strategy 1");
+		//Text topTextBPCenter = new Text("Strategy 1");
 		
 		//BorderPane.setAlignment(topTextBP, Pos.CENTER);
-		bpCenter.setTop(topTextBPCenter);
+		//bpCenter.setTop(topTextBPCenter);
 
 		makeRightSide(bp);
 
@@ -142,13 +150,31 @@ public class FXTreeView extends Application
 		// Making the text field in the middle in bpCenter
 		this.textTop = new Text();
 		textTop.setText("Node Name");
+		((BorderPane) bpCenter.getTop()).setAlignment(textTop, Pos.CENTER);
+		textTop.setStyle("-fx-font-size: 20px;");
 		bpCenter.setTop(textTop);
 	    
 		
 
-		this.textFieldCenter = new TextField();
+		this.textFieldCenter = new TextArea();
+		
+		textFieldCenter.setMaxWidth(400);
+		textFieldCenter.setMaxHeight(75);
+		textFieldCenter.setWrapText(true);
+		textFieldCenter.setStyle("-fx-font-size: 14px;\n-fx-font-color: black;");
+		
+		Label l1= new Label("Contents:");
+		l1.setStyle("-fx-font-size: 18px;");
+		
+		HBox hb = new HBox();
+		hb.getChildren().addAll(l1, textFieldCenter);
+		hb.setSpacing(10);
+		
+		BorderPane.setMargin(bpCenter, new Insets(100,25,10,25));
+		BorderPane.setMargin(bpCenter.getTop(), new Insets(10,100,20,25));
 		textFieldCenter.setPromptText("Node Contents");
-		bpCenter.setCenter(textFieldCenter);
+		bpCenter.setCenter(hb);
+	
 		
 		
 
@@ -236,11 +262,19 @@ public class FXTreeView extends Application
 		if (planFile.isCanEdit())
 		{
 			VBox rightSide = new VBox();
+			
+			rightSide.setPrefWidth(100);
+
+			
+			rightSide.setPadding(new Insets(30, 30, 50, 30));
 
 			Text rightSideLabel = new Text("Editing Tools");
+			rightSideLabel.setStyle("-fx-font-size: 20px;");
 			rightSide.getChildren().add(rightSideLabel);
 
 			this.btn1 = new Button("Remove");
+			btn1.setMinWidth(rightSide.getPrefWidth());
+			
 			this.btn1.setDisable(true);
 			this.btn1.setOnAction(new EventHandler<ActionEvent>() {
 				@Override public void handle(ActionEvent e) {
@@ -260,6 +294,7 @@ public class FXTreeView extends Application
 
 
 			this.btn2 = new Button("Add Subsection");
+			btn2.setMinWidth(rightSide.getPrefWidth());
 			this.btn2.setDisable(true);
 			this.btn2.setOnAction(new EventHandler<ActionEvent>() {
 				@Override public void handle(ActionEvent e) {
@@ -277,6 +312,7 @@ public class FXTreeView extends Application
 			});
 
 			this.btn3 = new Button("Save");
+			btn3.setMinWidth(rightSide.getPrefWidth());
 			this.btn3.setDisable(true);
 			
 			this.btn3.setOnAction(new EventHandler<ActionEvent>() {
@@ -293,10 +329,17 @@ public class FXTreeView extends Application
 
 
 			});
-
+			
 			rightSide.getChildren().addAll(btn1, btn2, btn3);
+			
+			rightSide.setSpacing(30.0);
+			
+			rightSide.setStyle("-fx-border-color: lightgrey;\n-fx-border-insets: 5;\n-fx-border-width: 3;\n-fx-background-color: lightgrey;");
+			    
 
 			bp.setRight(rightSide);
+			
+			
 		}
 	
 	}
@@ -393,16 +436,7 @@ public class FXTreeView extends Application
 		this.textTop.setText(newValue.getValue().getName());
 		this.textFieldCenter.setText(newValue.getValue().getData());
 		
-		
-		/*textField.setOnKeyPressed(new EventHandler<KeyEvent>() 
-		{
-            public void handle(KeyEvent ke) 
-            {
-                System.out.println(textField.getText()+ke.getText());//.add("Key Pressed: " + ke.getText()););
-                currNode.setName(textField.getText()+ke.getText());
-            }
-        });*/
-		
+
 		textFieldCenter.setOnKeyPressed(new EventHandler<KeyEvent>() 
 		{
             public void handle(KeyEvent ke) 
@@ -411,24 +445,7 @@ public class FXTreeView extends Application
                 currNode.setData(textFieldCenter.getText()+ke.getText());
             }
         });
-		
-		/*textField.textProperty().addListener((obs, oldText, newText) -> {
-		    System.out.println("Text changed from "+oldText+" to "+newText);
-		    this.btn3.setDisable(false);
-		    
-		    String newData = textField.getText();
-		    this.currNode.setName(newData);
-		    // ...
-		});
-		
-		textFieldCenter.textProperty().addListener((obs, oldText, newText) -> {
-			System.out.println("Text changed from "+oldText+" to "+newText);
-			this.btn3.setDisable(false);
-			
-		    String newData = textFieldCenter.getText();
-		    this.currNode.setData(newData);
-		    // ...
-		});*/
+
 		
 		this.currNode = newValue.getValue();
 		
