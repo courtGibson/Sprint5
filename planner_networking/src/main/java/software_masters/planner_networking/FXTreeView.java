@@ -36,6 +36,7 @@ import javafx.scene.control.TreeView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
+
 public class FXTreeView extends Application
 {
 	VBox root;
@@ -55,11 +56,20 @@ public class FXTreeView extends Application
 	static Server actualServer;
 	static Registry registry;
 
+
 	public static void main(String[] args)
 	{
 		Application.launch(args);
 	}
 	
+	
+	/**
+	 * Sets up initial data
+	 * 
+	 * 
+	 * @throws IllegalArgumentException 
+	 * @throws RemoteException
+	 */
 	private void startUp() throws IllegalArgumentException, RemoteException
 	{
 	
@@ -107,6 +117,13 @@ public class FXTreeView extends Application
 		
 	}
 
+	/**
+	 * makes stage and other window elements
+	 * 
+	 *
+	 * @param primaryStage stage
+	 * @throws RemoteException if unable to perform action
+	 */
 	@Override
 	public void start(Stage primaryStage) throws RemoteException
 	{
@@ -200,6 +217,13 @@ public class FXTreeView extends Application
 
 	}
 	
+	/**
+	 * shuts down server connection when window closed
+	 * 
+	 * @throws AccessException if unable to perform action
+	 * @throws RemoteException if unable to perform action
+	 * @throws NotBoundException if unable to perform action
+	 */
 	@Override
 	public void stop() throws AccessException, RemoteException, NotBoundException
 	{
@@ -210,7 +234,12 @@ public class FXTreeView extends Application
 	}
 	
 	
-	
+	/**
+	 * removes node and branch
+	 * 
+	 * @param btn1 remove button
+	 * @throws RemoteException
+	 */
 	private void removeNode(Button btn1) throws RemoteException
 	{
 		this.testClient.setCurrNode(this.currNode);
@@ -227,6 +256,12 @@ public class FXTreeView extends Application
 		
 	}
 	
+	/**
+	 * adds node and branch
+	 * 
+	 * @param btn2 add button
+	 * @throws RemoteException
+	 */
 	private void addNode(Button btn2) throws RemoteException
 	{
 		this.testClient.setCurrNode(this.currNode);
@@ -242,6 +277,12 @@ public class FXTreeView extends Application
 		this.btn3.setDisable(false);
 	}
 	
+	/**
+	 * saves plan file
+	 * 
+	 * @param btn3 save button
+	 * @throws RemoteException
+	 */
 	private void save(Button btn3) throws RemoteException
 	{
 		this.testClient.setCurrNode(this.currNode);
@@ -255,7 +296,14 @@ public class FXTreeView extends Application
 		
 		this.btn2.setDisable(true);
 	}
-
+	
+	
+	/**
+	 * Makes edit buttons, if plan is not editable, will not be visable
+	 * 
+	 * @param bp borderpane
+	 * 
+	 */
 	private void makeRightSide(BorderPane bp)
 	{
 		// Building the buttons on the right
@@ -343,7 +391,13 @@ public class FXTreeView extends Application
 		}
 	
 	}
-
+	
+	/**
+	 * makes tree view for the left side of the borderpane
+	 * 
+	 * @return VBox
+	 * @throws RemoteExcpetion
+	 */
 	private VBox makeTree() throws RemoteException
 	{
 		
@@ -396,6 +450,14 @@ public class FXTreeView extends Application
 	}
 
 	// This method creates an ArrayList of TreeItems (Products)
+	
+	/**
+	 * gets items for TreeView
+	 * 
+	 * @param root node
+	 * @return TreeItem 
+	 * @throws RemoteException if unable to perform action
+	 */
 	public TreeItem<Node> getProducts(Node root) throws RemoteException
 	{
 
@@ -411,7 +473,13 @@ public class FXTreeView extends Application
 
 		return currentTreeItem;
 	}
-
+	
+	/**
+	 * gets items to add to treeView
+	 * 
+	 * @param parentTreeItem TreeITem
+	 * @param parentNode node
+	 */
 	private void getKids(Node parentNode, TreeItem<Node> parentTreeItem)
 	{
 
@@ -431,6 +499,11 @@ public class FXTreeView extends Application
 
 	}
 	
+	/**
+	 * handles tree item click events
+	 * 
+	 * @param newValue treeItem
+	 */
 	private void handleTreeClick(TreeItem<Node> newValue)
 	{
 		this.textTop.setText(newValue.getValue().getName());
