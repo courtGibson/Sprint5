@@ -180,6 +180,7 @@ public class FXTreeView extends Application
 				    new EventHandler<MouseEvent>() {
 				        @Override public void handle(MouseEvent e) {
 				            editTextField(nodeChild);
+				  
 				        }
 				});
 			
