@@ -514,7 +514,7 @@ public class FXTreeView extends Application
 		{
             public void handle(KeyEvent ke) 
             {
-                System.out.println(textFieldCenter.getText()+ke.getText());//.add("Key Pressed: " + ke.getText()););
+                //System.out.println(textFieldCenter.getText()+ke.getText());//.add("Key Pressed: " + ke.getText()););
                 currNode.setData(textFieldCenter.getText()+ke.getText());
             }
         });
