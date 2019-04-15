@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.homePageView.HomePageViewController">
+   <top>
+      <HBox prefHeight="65.0" prefWidth="738.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="66.0" prefWidth="201.0" style="-fx-background-color: lightgrey;">
+               <children>
+                  <Label prefHeight="22.0" prefWidth="87.0" text="Username: " translateX="10.0" translateY="20.0" underline="true">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="username" translateX="10.0" translateY="20.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="66.0" prefWidth="268.0" style="-fx-background-color: lightgrey;">
+               <children>
+                  <Label contentDisplay="CENTER" prefHeight="22.0" prefWidth="101.0" text="Department: " translateY="20.0" underline="true">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="department name" translateY="20.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="66.0" prefWidth="193.0" style="-fx-background-color: lightgrey;" />
+            <HBox prefHeight="66.0" prefWidth="157.0" style="-fx-background-color: lightgrey;">
+               <children>
+                  <Button mnemonicParsing="false" text="Logout" translateX="70.0" translateY="20.0" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <Pane prefHeight="499.0" prefWidth="738.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuButton layoutX="273.0" layoutY="157.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="173.0" text="select plan">
+              <items>
+                <MenuItem mnemonicParsing="false" text="plan1" />
+                <MenuItem mnemonicParsing="false" text="plan2" />
+                  <MenuItem mnemonicParsing="false" text="plan3" />
+                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+              </items>
+            </MenuButton>
+            <Label layoutX="231.0" layoutY="30.0" text="Department Plans" underline="true">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+            <Button layoutX="307.0" layoutY="304.0" mnemonicParsing="false" text="Submit Selection" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
