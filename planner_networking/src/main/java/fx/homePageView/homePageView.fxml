@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.homePageView.HomePageViewController">
+<BorderPane prefHeight="565.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.homePageView.HomePageViewController">
    <top>
       <HBox prefHeight="65.0" prefWidth="738.0" BorderPane.alignment="CENTER">
          <children>
@@ -51,9 +51,9 @@
       </HBox>
    </top>
    <center>
-      <Pane prefHeight="499.0" prefWidth="738.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="421.0" prefWidth="549.0" style="-fx-background-color: silver;" BorderPane.alignment="CENTER">
          <children>
-            <MenuButton layoutX="273.0" layoutY="157.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="173.0" text="select plan">
+            <MenuButton layoutX="186.0" layoutY="179.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="173.0" text="select plan">
               <items>
                 <MenuItem mnemonicParsing="false" text="plan1" />
                 <MenuItem mnemonicParsing="false" text="plan2" />
@@ -61,13 +61,27 @@
                   <MenuItem mnemonicParsing="false" text="Unspecified Action" />
               </items>
             </MenuButton>
-            <Label layoutX="231.0" layoutY="30.0" text="Department Plans" underline="true">
+            <Label layoutX="184.0" layoutY="24.0" text="Home Page" underline="true">
                <font>
                   <Font size="35.0" />
                </font>
             </Label>
-            <Button layoutX="307.0" layoutY="304.0" mnemonicParsing="false" text="Submit Selection" />
+            <Button layoutX="221.0" layoutY="290.0" mnemonicParsing="false" text="Submit Selection" />
+            <Label layoutX="202.0" layoutY="141.0" text="Department Plans">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </center>
+   <right>
+      <Pane prefHeight="446.0" prefWidth="103.0" BorderPane.alignment="CENTER" />
+   </right>
+   <left>
+      <Pane prefHeight="500.0" prefWidth="113.0" BorderPane.alignment="CENTER" />
+   </left>
+   <bottom>
+      <Pane prefHeight="54.0" prefWidth="766.0" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
