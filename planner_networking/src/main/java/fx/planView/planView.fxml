@@ -21,29 +21,35 @@
                      <children>
                         <Label text="Username: " translateX="10.0" translateY="20.0" underline="true">
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label text="username" translateX="10.0" translateY="20.0" />
+                        <Label text="username" translateX="10.0" translateY="20.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
                      </children>
                   </HBox>
-                  <HBox prefHeight="58.0" prefWidth="179.0">
+                  <HBox prefHeight="59.0" prefWidth="204.0">
                      <children>
                         <Label text="Department: " translateY="20.0" underline="true">
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <Label text="deptment name" translateY="20.0" />
+                        <Label text="deptment name" translateY="20.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Home Page" translateX="70.0" translateY="20.0" />
+                        <Button mnemonicParsing="false" text="Home Page" translateX="120.0" translateY="20.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Logout" translateX="70.0" translateY="20.0" />
+                        <Button mnemonicParsing="false" text="Logout" translateX="120.0" translateY="20.0" />
                      </children>
                   </HBox>
                </children>
