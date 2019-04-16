@@ -98,11 +98,9 @@ public class ServerViewController
 		if(DefaultServerButton.isSelected()) {
 			try
 			{
-<<<<<<< HEAD
-				registry = LocateRegistry.createRegistry(1076);
-=======
+
 				registry = LocateRegistry.createRegistry(1077);
->>>>>>> branch 'master' of https://github.com/courtGibson/Sprint3GUI.git
+			
 				ServerImplementation server = new ServerImplementation();
 				actualServer = server;
 				Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
@@ -123,11 +121,9 @@ public class ServerViewController
 			String hostName = OtherServerTextField.getAccessibleText();
 			try
 			{
-<<<<<<< HEAD
-				registry = LocateRegistry.getRegistry(hostName, 1076);
-=======
+
 				registry = LocateRegistry.getRegistry(hostName, 1077);
->>>>>>> branch 'master' of https://github.com/courtGibson/Sprint3GUI.git
+				
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
 				getConnected(testClient);

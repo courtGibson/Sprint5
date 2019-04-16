@@ -66,7 +66,7 @@
                   <Font size="35.0" />
                </font>
             </Label>
-            <Button id="submitPlanBtn" layoutX="221.0" layoutY="290.0" mnemonicParsing="false" text="Submit Selection" />
+            <Button id="submitPlanBtn" fx:id="planSubmitButton" layoutX="221.0" layoutY="290.0" mnemonicParsing="false" text="Submit Selection" />
             <Label layoutX="202.0" layoutY="141.0" text="Department Plans">
                <font>
                   <Font size="18.0" />
