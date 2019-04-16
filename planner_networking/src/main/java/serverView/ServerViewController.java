@@ -100,7 +100,7 @@ public class ServerViewController
 			{
 
 				registry = LocateRegistry.createRegistry(1077);
-			
+
 				ServerImplementation server = new ServerImplementation();
 				actualServer = server;
 				Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
@@ -123,7 +123,7 @@ public class ServerViewController
 			{
 
 				registry = LocateRegistry.getRegistry(hostName, 1077);
-				
+
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
 				getConnected(testClient);
