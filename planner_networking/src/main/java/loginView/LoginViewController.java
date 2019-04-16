@@ -96,7 +96,7 @@ public class LoginViewController
 		
 	}
 
-
+	// switch scenes
 	private void getConnected(Client testClient) throws Exception
 	{
 
