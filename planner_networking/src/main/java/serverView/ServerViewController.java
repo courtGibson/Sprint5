@@ -148,6 +148,7 @@ public class ServerViewController
 		
 		LoginViewController cont = loader.getController();
 		cont.setTestClient(testClient);
+		cont.setPrimaryStage(primaryStage);
 		
 		primaryStage.getScene().setRoot(mainView);
 		
