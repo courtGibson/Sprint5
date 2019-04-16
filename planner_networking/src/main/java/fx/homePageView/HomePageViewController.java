@@ -5,13 +5,18 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import fx.choosePlan.ChoosePlanController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import loginView.LoginViewController;
 import software_masters.planner_networking.Client;
@@ -35,7 +40,7 @@ public class HomePageViewController
 	private MenuButton menu;
 	
 	
-	public void makeMenu(Client testClient) throws RemoteException
+	public void makeMenu() throws RemoteException
 	{
 		//menu.getItems().addAll();
 		
@@ -46,20 +51,36 @@ public class HomePageViewController
 		 
 		 menu.getItems().addAll(menuItemList);
 		
+		 Label l = new Label("This is a MenuButton example "); 
 		
-		
-		
+		 EventHandler<ActionEvent> event1 = new EventHandler<ActionEvent>() { 
+	            public void handle(ActionEvent e) 
+	            { 
+	                l.setText(((MenuItem)e.getSource()).getText() + " selected"); 
+	            } 
+	        }; 
+	        
+	        //add action event to items
+	        for (MenuItem mi:menuItemList)
+	        {
+	        	 mi.setOnAction(event1); 
+	        }
+	
 		
 	}
 	
 	public ArrayList<MenuItem> getMenuItemList(ArrayList<PlanFile> plans)
 	{
+		
+		
 		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
 		
 		for(PlanFile p:plans)
 		{
 			MenuItem m = new MenuItem(p.getYear());
 			items.add(m);
+			
+			
 		}
 		
 		
