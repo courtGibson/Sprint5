@@ -1,6 +1,8 @@
 package software_masters.planner_networking;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.function.Consumer;
 
 /**
  * @author lee kendall and wesley murray
@@ -19,6 +21,7 @@ public class Client
 	private PlanFile currPlanFile;
 	private PlanNode currNode;
 	private Server server;
+	private ArrayList<PlanFile> deptPlans;
 
 	/**
 	 * Sets the client's server.
@@ -244,4 +247,19 @@ public class Client
 		this.server = server;
 	}
 
+	public ArrayList<PlanFile> getPlans() throws RemoteException
+	{
+		
+		ArrayList<PlanFile> plans = new ArrayList<PlanFile>();
+		
+		
+		this.server.getCookieMap().get(this.cookie).getDepartment().getPlanFileMap()
+						.forEachValue(Long.MAX_VALUE, (PlanFile x) -> plans.add(x));
+		
+		//System.out.println(plans);
+		this.deptPlans = plans;
+		
+		return plans;
+		
+	}
 }
