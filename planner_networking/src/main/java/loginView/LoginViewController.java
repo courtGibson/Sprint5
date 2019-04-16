@@ -22,6 +22,7 @@ public class LoginViewController
 	@FXML 
 	private Button LoginSubmitButton;
 	
+	
 	@FXML
 	public void onButtonSubmit(ActionEvent event) throws IllegalArgumentException, RemoteException{
 		String username = UsernameTextField.textProperty().get();
@@ -29,7 +30,7 @@ public class LoginViewController
 		
 		System.out.println(username);
 		System.out.println(password);
-		
+		// sends to login function
 		client.login(username, password);
 		
 	}
