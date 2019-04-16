@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.loginView.LoginViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loginView.LoginViewController">
    <top>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" underline="true" wrappingWidth="421.30859375" BorderPane.alignment="CENTER">
          <font>
@@ -66,7 +66,7 @@
       </VBox>
    </center>
    <bottom>
-      <Button id="LoginSubmitButton" fx:id="LoginSubmitButton" mnemonicParsing="false" text="Submit" BorderPane.alignment="CENTER">
+      <Button id="LoginSubmitButton" fx:id="LoginSubmitButton" mnemonicParsing="false" onAction="#onButtonSubmit" text="Submit" BorderPane.alignment="CENTER">
          <font>
             <Font size="26.0" />
          </font>

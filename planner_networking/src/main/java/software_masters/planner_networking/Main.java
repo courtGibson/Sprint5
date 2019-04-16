@@ -25,6 +25,8 @@ public class Main extends Application
 
 		
 		ServerViewController cont = loader.getController();
+		cont.setMainView(mainView);
+		cont.setPrimaryStage(primaryStage);
 		
 		Scene s = new Scene(mainView);
 		primaryStage.setScene(s);
