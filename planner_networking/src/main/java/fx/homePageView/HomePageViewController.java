@@ -10,7 +10,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
@@ -37,7 +39,7 @@ public class HomePageViewController
 	PlanFile selectedPlan;
 	
 	@FXML
-	private MenuButton menu;
+	private ComboBox<PlanFile> menu;
 	
 	
 	public void makeMenu() throws RemoteException
@@ -46,45 +48,20 @@ public class HomePageViewController
 		
 		ArrayList<PlanFile> plans = testClient.getPlans();
 		
-		
-		 ArrayList<MenuItem> menuItemList = getMenuItemList(plans);
 		 
-		 menu.getItems().addAll(menuItemList);
-		
-		 Label l = new Label("This is a MenuButton example "); 
-		
-		 EventHandler<ActionEvent> event1 = new EventHandler<ActionEvent>() { 
-	            public void handle(ActionEvent e) 
-	            { 
-	                l.setText(((MenuItem)e.getSource()).getText() + " selected"); 
-	            } 
-	        }; 
-	        
-	        //add action event to items
-	        for (MenuItem mi:menuItemList)
-	        {
-	        	 mi.setOnAction(event1); 
-	        }
-	
-		
-	}
-	
-	public ArrayList<MenuItem> getMenuItemList(ArrayList<PlanFile> plans)
-	{
-		
-		
-		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
-		
-		for(PlanFile p:plans)
-		{
-			MenuItem m = new MenuItem(p.getYear());
-			items.add(m);
-			
-			
-		}
-		
-		
-		return items;
+		 menu.getItems().addAll(plans);
+		 
+		 Label selected = new Label("Select plan");
+		 
+		 EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() 
+		 { 
+           public void handle(ActionEvent e) 
+           { 
+               selected.setText(menu.getValue().getPlan().getName()+menu.getValue().getYear()); 
+           } 
+       }; 
+		 
+		 
 		
 	}
 	
