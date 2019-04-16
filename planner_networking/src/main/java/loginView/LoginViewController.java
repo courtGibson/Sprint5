@@ -2,13 +2,16 @@ package loginView;
 
 import java.rmi.RemoteException;
 
+import fx.homePageView.HomePageViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import software_masters.planner_networking.Client;
+import software_masters.planner_networking.Main;
 
 
 
@@ -75,7 +78,7 @@ public class LoginViewController
 	
 	
 	@FXML
-	public void onButtonSubmit() throws IllegalArgumentException, RemoteException{
+	public void onButtonSubmit() throws Exception{
 		String username = UsernameTextField.textProperty().get();
 		String password = PasswordTextField.textProperty().get();
 		
@@ -84,11 +87,34 @@ public class LoginViewController
 		// sends to login function
 		testClient.login(username, password);
 		System.out.print(testClient.getCookie());
+		System.out.print("logged in");
+		
+		getConnected(testClient);
+		
+		
+		
 		
 	}
 
 
+	private void getConnected(Client testClient) throws Exception
+	{
 
+		this.testClient = testClient;
+		
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/fx.homePageView/homePageView.fxml"));
+		this.mainView = loader.load();
+		
+		HomePageViewController cont = loader.getController();
+		cont.setTestClient(testClient);
+		
+		primaryStage.getScene().setRoot(mainView);
+		
+		
+		
+		
+	}
 	
 	
 	
