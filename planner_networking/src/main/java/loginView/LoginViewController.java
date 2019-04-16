@@ -103,7 +103,7 @@ public class LoginViewController
 		this.testClient = testClient;
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("/fx.homePageView/homePageView.fxml"));
+		loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
 		this.mainView = loader.load();
 		
 		HomePageViewController cont = loader.getController();

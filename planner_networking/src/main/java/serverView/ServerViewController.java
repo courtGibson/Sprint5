@@ -100,6 +100,7 @@ public class ServerViewController
 			{
 
 				registry = LocateRegistry.createRegistry(1077);
+
 				ServerImplementation server = new ServerImplementation();
 				actualServer = server;
 				Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
@@ -120,7 +121,9 @@ public class ServerViewController
 			String hostName = OtherServerTextField.getAccessibleText();
 			try
 			{
+
 				registry = LocateRegistry.getRegistry(hostName, 1077);
+
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
 				getConnected(testClient);
@@ -145,6 +148,7 @@ public class ServerViewController
 		
 		LoginViewController cont = loader.getController();
 		cont.setTestClient(testClient);
+		cont.setPrimaryStage(primaryStage);
 		
 		primaryStage.getScene().setRoot(mainView);
 		
