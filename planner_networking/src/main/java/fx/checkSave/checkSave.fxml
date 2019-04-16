@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane prefHeight="374.0" prefWidth="455.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="fx.checkSave.CheckSave">
+   <center>
+      <Pane prefHeight="300.0" prefWidth="455.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox layoutX="100.0" layoutY="77.0" prefHeight="100.0" prefWidth="254.0">
+               <children>
+                  <Button id="checkSave" fx:id="checkSave" mnemonicParsing="false" prefHeight="55.0" prefWidth="103.0" text="Save" />
+                  <Button id="checkExit" fx:id="checkExit" mnemonicParsing="false" prefHeight="56.0" prefWidth="105.0" text="Exit">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </center>
+   <top>
+      <VBox prefHeight="142.0" prefWidth="455.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
+         <children>
+            <Label contentDisplay="CENTER" text="There are unsaved changes." translateX="90.0">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Would you like to save before exiting?" translateX="22.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </top>
+</BorderPane>
