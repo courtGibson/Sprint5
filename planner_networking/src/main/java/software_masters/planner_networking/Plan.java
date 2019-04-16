@@ -14,7 +14,7 @@ public abstract class Plan implements Serializable// extends UnicastRemoteObject
 	private static final long serialVersionUID = 1538776243780396317L;
 	private String name;
 	private ArrayList<String> defaultNodes = new ArrayList<String>();
-	private Node root;
+	private PlanNode root;
 
 	/**
 	 * @throws RemoteException
@@ -36,8 +36,8 @@ public abstract class Plan implements Serializable// extends UnicastRemoteObject
 	 */
 	protected void addDefaultNodes() throws RemoteException
 	{
-		root = new Node(null, defaultNodes.get(0), null, null);
-		Node newParent = new Node(root, defaultNodes.get(1), null, null);
+		root = new PlanNode(null, defaultNodes.get(0), null, null);
+		PlanNode newParent = new PlanNode(root, defaultNodes.get(1), null, null);
 		root.addChild(newParent);
 		addNode(newParent);
 	}
@@ -46,22 +46,22 @@ public abstract class Plan implements Serializable// extends UnicastRemoteObject
 	 * @param parent
 	 * @return
 	 */
-	abstract public boolean addNode(Node parent) throws RemoteException, IllegalArgumentException;
+	abstract public boolean addNode(PlanNode parent) throws RemoteException, IllegalArgumentException;
 
 	/**
-	 * @param Node
+	 * @param PlanNode
 	 * @return
 	 */
-	abstract public boolean removeNode(Node Node) throws IllegalArgumentException;
+	abstract public boolean removeNode(PlanNode Node) throws IllegalArgumentException;
 
 	/**
-	 * Takes a Node node and String data Sets data for the node
+	 * Takes a PlanNode node and String data Sets data for the node
 	 * 
 	 * @param node node to set data for
 	 * @param data data to set in node
 	 * 
 	 */
-	public void setNodeData(Node node, String data)
+	public void setNodeData(PlanNode node, String data)
 	{
 		node.setData(data);
 	}
@@ -69,10 +69,10 @@ public abstract class Plan implements Serializable// extends UnicastRemoteObject
 	/**
 	 * returns the root node
 	 * 
-	 * @return Node root node
+	 * @return PlanNode root node
 	 * 
 	 */
-	public Node getRoot()
+	public PlanNode getRoot()
 	{
 		return root;
 	}

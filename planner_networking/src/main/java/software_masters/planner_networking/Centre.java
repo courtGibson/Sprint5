@@ -34,13 +34,13 @@ public class Centre extends Plan
 	}
 
 	/**
-	 * Take a Node parent and adds the required children and returns a boolean true
+	 * Take a PlanNode parent and adds the required children and returns a boolean true
 	 * if added
 	 * 
 	 * @param parent parent of node that needs to be added
 	 * @return boolean true if added
 	 */
-	public boolean addNode(Node parent) throws RemoteException, IllegalArgumentException
+	public boolean addNode(PlanNode parent) throws RemoteException, IllegalArgumentException
 	{
 		if (parent == null)
 		{
@@ -50,7 +50,7 @@ public class Centre extends Plan
 			for (int i = (this.getList().indexOf(parent.getName())) + 1; i < this.getList().size(); i++)
 			{
 
-				Node newNode = new Node(parent, this.getList().get(i), null, null);
+				PlanNode newNode = new PlanNode(parent, this.getList().get(i), null, null);
 
 				parent.addChild(newNode);
 				parent = newNode;
@@ -64,12 +64,12 @@ public class Centre extends Plan
 	// cannot be removed if it is the only child of its parent
 	// or if it is the root node
 	/**
-	 * Takes a Node nodeRemove and returns a boolean true is removed
+	 * Takes a PlanNode nodeRemove and returns a boolean true is removed
 	 * 
 	 * @param nodeRemove node to be removed
 	 * @return boolean true if removed
 	 */
-	public boolean removeNode(Node nodeRemove) throws IllegalArgumentException
+	public boolean removeNode(PlanNode nodeRemove) throws IllegalArgumentException
 	{
 		if ((nodeRemove.getName() == this.getRoot().getName()) || nodeRemove.getParent().getChildren().size() == 1
 				|| nodeRemove == null)

@@ -38,12 +38,12 @@ public class IowaState extends Plan
 	}
 
 	/**
-	 * Takes a Node parent and returns a boolean true if added
+	 * Takes a PlanNode parent and returns a boolean true if added
 	 * 
 	 * @param parent parent of node to be added
 	 * @return boolean true if added
 	 */
-	public boolean addNode(Node parent) throws RemoteException, IllegalArgumentException
+	public boolean addNode(PlanNode parent) throws RemoteException, IllegalArgumentException
 	{
 		if (parent.getName() == "Vision" || parent == null)
 		{
@@ -54,7 +54,7 @@ public class IowaState extends Plan
 			for (int i = (this.getList().indexOf(parent.getName())) + 1; i < this.getList().size(); i++)
 			{
 
-				Node newNode = new Node(parent, this.getList().get(i), null, null);
+				PlanNode newNode = new PlanNode(parent, this.getList().get(i), null, null);
 
 				parent.addChild(newNode);
 				parent = newNode;
@@ -65,13 +65,13 @@ public class IowaState extends Plan
 	}
 
 	/**
-	 * Takes a Node nodeRemove and returns a boolean true if removed
+	 * Takes a PlanNode nodeRemove and returns a boolean true if removed
 	 * 
 	 * @param nodeRemove node to be removed
 	 * @return boolean true if removed
 	 * 
 	 */
-	public boolean removeNode(Node nodeRemove) throws IllegalArgumentException
+	public boolean removeNode(PlanNode nodeRemove) throws IllegalArgumentException
 	{
 		if (nodeRemove.getName() == this.getRoot().getName() || nodeRemove.getParent().getChildren().size() == 1
 				|| nodeRemove == null)

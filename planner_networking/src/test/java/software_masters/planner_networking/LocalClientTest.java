@@ -269,7 +269,7 @@ public class LocalClientTest
 		//////////////////////////////////// example/////////////////////////////////////////////
 		testClient.getPlan("2019");
 		PlanFile test = testClient.getCurrPlanFile();
-		Node root = test.getPlan().getRoot();
+		PlanNode root = test.getPlan().getRoot();
 		// try adding second mission should throw exception
 		testClient.setCurrNode(root);
 		assertThrows(IllegalArgumentException.class, () -> testClient.addBranch());
@@ -334,7 +334,7 @@ public class LocalClientTest
 		//////////////////////////////////// example/////////////////////////////////////////////
 		testClient.getPlan("2019");
 		PlanFile test = testClient.getCurrPlanFile();
-		Node root = test.getPlan().getRoot();
+		PlanNode root = test.getPlan().getRoot();
 		// try removing mission should throw exception
 		testClient.setCurrNode(root);// mission level
 		assertThrows(IllegalArgumentException.class, () -> testClient.removeBranch());
@@ -360,7 +360,7 @@ public class LocalClientTest
 		/////////////////////////////////// VMOSA
 		/////////////////////////////////// example///////////////////////////////////////////////
 		Plan VMOSA_test = new VMOSA();
-		Node root = VMOSA_test.getRoot();
+		PlanNode root = VMOSA_test.getRoot();
 		PlanFile vmosaTest = new PlanFile("2018", true, VMOSA_test);
 		testClient.setCurrPlanFile(vmosaTest);
 		// try removing mission should throw exception
@@ -388,7 +388,7 @@ public class LocalClientTest
 		/////////////////////////////////// Iowa state
 		/////////////////////////////////// example///////////////////////////////////////////////
 		Plan IOWA_test = new IowaState();
-		Node root = IOWA_test.getRoot();
+		PlanNode root = IOWA_test.getRoot();
 		PlanFile iowaTest = new PlanFile("2017", true, IOWA_test);
 		testClient.setCurrPlanFile(iowaTest);
 		// try remove mission should throw exception

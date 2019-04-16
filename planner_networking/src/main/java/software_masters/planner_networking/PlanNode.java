@@ -14,17 +14,17 @@ import java.rmi.RemoteException;
  * @author lee and wesley
  */
 
-public class Node implements Serializable
+public class PlanNode implements Serializable
 {
 	private static final long serialVersionUID = 5908372020728915437L;
-	private Node parent;
+	private PlanNode parent;
 	private String name;
 	private String data;
-	private ArrayList<Node> children = new ArrayList<Node>();
+	private ArrayList<PlanNode> children = new ArrayList<PlanNode>();
 
 	// constructor is data is not known
 	/**
-	 * Takes a Node parent, String name, String data, and list of children Sets
+	 * Takes a PlanNode parent, String name, String data, and list of children Sets
 	 * values in node
 	 * 
 	 * @param parent parent of node
@@ -32,7 +32,7 @@ public class Node implements Serializable
 	 * @param data   data for node
 	 * @param child  list of children
 	 */
-	public Node(Node parent, String name, String data, ArrayList<Node> child) throws RemoteException
+	public PlanNode(PlanNode parent, String name, String data, ArrayList<PlanNode> child) throws RemoteException
 	{
 		this.name = name;
 		this.parent = parent;
@@ -41,7 +41,7 @@ public class Node implements Serializable
 	}
 
 	// empty constructor for XML
-	public Node() throws RemoteException
+	public PlanNode() throws RemoteException
 	{
 		this(null, "blank", "empty", null);
 	}
@@ -90,19 +90,19 @@ public class Node implements Serializable
 	/**
 	 * returns the parent node
 	 * 
-	 * @return Node parent of node
+	 * @return PlanNode parent of node
 	 */
-	public Node getParent()
+	public PlanNode getParent()
 	{
 		return parent;
 	}
 
 	/**
-	 * Takes a Node parent and sets the nodes parent
+	 * Takes a PlanNode parent and sets the nodes parent
 	 * 
 	 * @param parent parent to set as parent of node
 	 */
-	public void setParent(Node parent)
+	public void setParent(PlanNode parent)
 	{
 		this.parent = parent;
 	}
@@ -112,20 +112,20 @@ public class Node implements Serializable
 	 * 
 	 * @return ArrayList list of children
 	 */
-	public ArrayList<Node> getChildren()
+	public ArrayList<PlanNode> getChildren()
 	{
 		return children;
 	}
 
 	//
 
-	// add a Node child to another node
+	// add a PlanNode child to another node
 	/**
 	 * Takes a node child and adds child to child list
 	 * 
 	 * @param child child to be added to this node
 	 */
-	public void addChild(Node child)
+	public void addChild(PlanNode child)
 	{
 		this.children.add(child);
 	}
@@ -134,7 +134,7 @@ public class Node implements Serializable
 	/**
 	 * @param child child to be removed from this node
 	 */
-	public void removeChild(Node child)
+	public void removeChild(PlanNode child)
 	{
 		this.children.remove(child);
 	}
@@ -153,7 +153,7 @@ public class Node implements Serializable
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Node other = (Node) obj;
+		PlanNode other = (PlanNode) obj;
 		if (children == null)
 		{
 			if (other.children != null)

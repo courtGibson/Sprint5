@@ -17,7 +17,7 @@ public class Client
 	 */
 	private String cookie;
 	private PlanFile currPlanFile;
-	private Node currNode;
+	private PlanNode currNode;
 	private Server server;
 
 	/**
@@ -149,7 +149,7 @@ public class Client
 	 */
 	public void removeBranch() throws IllegalArgumentException
 	{
-		Node temp = this.currNode.getParent();
+		PlanNode temp = this.currNode.getParent();
 		this.currPlanFile.getPlan().removeNode(this.currNode);
 		this.currNode = temp.getChildren().get(0);
 	}
@@ -215,7 +215,7 @@ public class Client
 	/**
 	 * @return the currNode
 	 */
-	public Node getCurrNode()
+	public PlanNode getCurrNode()
 	{
 		return currNode;
 	}
@@ -223,7 +223,7 @@ public class Client
 	/**
 	 * @param currNode the currNode to set
 	 */
-	public void setCurrNode(Node currNode)
+	public void setCurrNode(PlanNode currNode)
 	{
 		this.currNode = currNode;
 	}

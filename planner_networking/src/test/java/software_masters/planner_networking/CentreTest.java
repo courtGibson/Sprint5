@@ -29,11 +29,11 @@ public class CentreTest
 		}
 
 		// get root node
-		Node rootNode = CentrePlan.getRoot();
-		Node goal = rootNode.getChildren().get(0);
-		Node learn = goal.getChildren().get(0);
-		Node assess = learn.getChildren().get(0);
-		Node res = assess.getChildren().get(0);
+		PlanNode rootNode = CentrePlan.getRoot();
+		PlanNode goal = rootNode.getChildren().get(0);
+		PlanNode learn = goal.getChildren().get(0);
+		PlanNode assess = learn.getChildren().get(0);
+		PlanNode res = assess.getChildren().get(0);
 
 		assertEquals("Mission", rootNode.getName());
 		assertEquals("Goal", goal.getName());
@@ -46,10 +46,10 @@ public class CentreTest
 		// add goal, and following, nodes
 		CentrePlan.addNode(rootNode);
 		assertEquals(2, rootNode.getChildren().size());
-		Node goalNode = rootNode.getChildren().get(0);
-		Node learn2 = goalNode.getChildren().get(0);
-		Node assess2 = learn2.getChildren().get(0);
-		Node res2 = assess2.getChildren().get(0);
+		PlanNode goalNode = rootNode.getChildren().get(0);
+		PlanNode learn2 = goalNode.getChildren().get(0);
+		PlanNode assess2 = learn2.getChildren().get(0);
+		PlanNode res2 = assess2.getChildren().get(0);
 
 		assertEquals("Goal", goalNode.getName());
 		assertEquals("Learning Objective", learn2.getName());
@@ -57,7 +57,7 @@ public class CentreTest
 		assertEquals("Results", res2.getName());
 
 		// remove a goal node
-		Node rm = rootNode.getChildren().get(0);
+		PlanNode rm = rootNode.getChildren().get(0);
 		// check to see if removed
 		CentrePlan.removeNode(rm);
 		assertEquals(1, rootNode.getChildren().size());
@@ -73,7 +73,7 @@ public class CentreTest
 	{
 		// make plan and set pointer to root
 		Plan CentrePlan2 = new Centre();
-		Node r = CentrePlan2.getRoot();
+		PlanNode r = CentrePlan2.getRoot();
 		// try to remove root
 		try
 		{

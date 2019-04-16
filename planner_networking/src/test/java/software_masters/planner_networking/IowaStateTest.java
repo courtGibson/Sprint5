@@ -28,14 +28,14 @@ public class IowaStateTest
 		}
 
 		// get root node
-		Node rootNode = IowaStatePlan.getRoot();
-		Node m = rootNode.getChildren().get(0);
-		Node cv = m.getChildren().get(0);
-		Node stra = cv.getChildren().get(0);
-		Node goal = stra.getChildren().get(0);
-		Node obj = goal.getChildren().get(0);
-		Node act = obj.getChildren().get(0);
-		Node assess = act.getChildren().get(0);
+		PlanNode rootNode = IowaStatePlan.getRoot();
+		PlanNode m = rootNode.getChildren().get(0);
+		PlanNode cv = m.getChildren().get(0);
+		PlanNode stra = cv.getChildren().get(0);
+		PlanNode goal = stra.getChildren().get(0);
+		PlanNode obj = goal.getChildren().get(0);
+		PlanNode act = obj.getChildren().get(0);
+		PlanNode assess = act.getChildren().get(0);
 
 		assertEquals("Vision", rootNode.getName());
 		assertEquals("Mission", m.getName());
@@ -50,16 +50,16 @@ public class IowaStateTest
 		assertEquals(false, rootNode.getChildren().isEmpty());
 		// add objective, and following, nodes
 		// check if added
-		Node missionNode = rootNode.getChildren().get(0);
+		PlanNode missionNode = rootNode.getChildren().get(0);
 
 		IowaStatePlan.addNode(missionNode);
 		assertEquals(2, missionNode.getChildren().size());
-		Node cv2 = missionNode.getChildren().get(0);
-		Node stra2 = cv2.getChildren().get(0);
-		Node goal2 = stra2.getChildren().get(0);
-		Node obj2 = goal2.getChildren().get(0);
-		Node act2 = obj2.getChildren().get(0);
-		Node assess2 = act2.getChildren().get(0);
+		PlanNode cv2 = missionNode.getChildren().get(0);
+		PlanNode stra2 = cv2.getChildren().get(0);
+		PlanNode goal2 = stra2.getChildren().get(0);
+		PlanNode obj2 = goal2.getChildren().get(0);
+		PlanNode act2 = obj2.getChildren().get(0);
+		PlanNode assess2 = act2.getChildren().get(0);
 
 		assertEquals("Core Value", cv2.getName());
 		assertEquals("Strategy", stra2.getName());
@@ -69,7 +69,7 @@ public class IowaStateTest
 		assertEquals("Assessment", assess2.getName());
 
 		// remove mission node and check if removed
-		Node rm = missionNode.getChildren().get(0);
+		PlanNode rm = missionNode.getChildren().get(0);
 		IowaStatePlan.removeNode(rm);
 		assertEquals(1, missionNode.getChildren().size());
 
@@ -85,7 +85,7 @@ public class IowaStateTest
 	{
 		// make plan and set pointer to root
 		Plan IowaStatePlan2 = new IowaState();
-		Node r = IowaStatePlan2.getRoot();
+		PlanNode r = IowaStatePlan2.getRoot();
 		// try to remove root
 		try
 		{

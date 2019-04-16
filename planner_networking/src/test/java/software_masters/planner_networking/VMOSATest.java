@@ -29,12 +29,12 @@ public class VMOSATest
 		}
 
 		// get root node
-		Node rootNode = VMOSAPlan.getRoot();
-		Node missionNode = rootNode.getChildren().get(0);
-		Node objNode = missionNode.getChildren().get(0);
-		Node stratNode = objNode.getChildren().get(0);
-		Node ActNode = stratNode.getChildren().get(0);
-		Node assessNode = ActNode.getChildren().get(0);
+		PlanNode rootNode = VMOSAPlan.getRoot();
+		PlanNode missionNode = rootNode.getChildren().get(0);
+		PlanNode objNode = missionNode.getChildren().get(0);
+		PlanNode stratNode = objNode.getChildren().get(0);
+		PlanNode ActNode = stratNode.getChildren().get(0);
+		PlanNode assessNode = ActNode.getChildren().get(0);
 
 		// see that all nodes were added after root
 		assertEquals("Vision", rootNode.getName());
@@ -49,10 +49,10 @@ public class VMOSATest
 
 		VMOSAPlan.addNode(missionNode);
 		assertEquals(2, missionNode.getChildren().size());
-		Node obj2 = missionNode.getChildren().get(1);
-		Node strat2 = obj2.getChildren().get(0);
-		Node act2 = strat2.getChildren().get(0);
-		Node assess2 = act2.getChildren().get(0);
+		PlanNode obj2 = missionNode.getChildren().get(1);
+		PlanNode strat2 = obj2.getChildren().get(0);
+		PlanNode act2 = strat2.getChildren().get(0);
+		PlanNode assess2 = act2.getChildren().get(0);
 
 		assertEquals("Objective", obj2.getName());
 		assertEquals("Strategy", strat2.getName());
@@ -61,7 +61,7 @@ public class VMOSATest
 
 		// set pointer to an objective node and remove it
 		// check to see if removed
-		Node rm = missionNode.getChildren().get(0);
+		PlanNode rm = missionNode.getChildren().get(0);
 		VMOSAPlan.removeNode(rm);
 		assertEquals(1, missionNode.getChildren().size());
 
@@ -77,7 +77,7 @@ public class VMOSATest
 	{
 		// make a plan and set pointer to root
 		Plan VMOSAPlan2 = new VMOSA();
-		Node r = VMOSAPlan2.getRoot();
+		PlanNode r = VMOSAPlan2.getRoot();
 		// try to remove root
 		try
 		{

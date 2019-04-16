@@ -42,8 +42,8 @@ public class FXTreeView extends Application
 	VBox root;
 	Text textTop;
 	TextArea textFieldCenter;
-	Node planRoot;
-	Node currNode;
+	PlanNode planRoot;
+	PlanNode currNode;
 	PlanFile planFile;
 
 	BorderPane bp;
@@ -166,7 +166,7 @@ public class FXTreeView extends Application
 
 		// Making the text field in the middle in bpCenter
 		this.textTop = new Text();
-		textTop.setText("Node Name");
+		textTop.setText("PlanNode Name");
 		((BorderPane) bpCenter.getTop()).setAlignment(textTop, Pos.CENTER);
 		textTop.setStyle("-fx-font-size: 20px;");
 		bpCenter.setTop(textTop);
@@ -189,7 +189,7 @@ public class FXTreeView extends Application
 		
 		BorderPane.setMargin(bpCenter, new Insets(100,25,10,25));
 		BorderPane.setMargin(bpCenter.getTop(), new Insets(10,100,20,25));
-		textFieldCenter.setPromptText("Node Contents");
+		textFieldCenter.setPromptText("PlanNode Contents");
 		bpCenter.setCenter(hb);
 	
 		
@@ -410,21 +410,21 @@ public class FXTreeView extends Application
 //
 //        ArrayList<TreeItem> products = helper.getProducts(planRoot);
 
-		TreeItem<Node> rootItem = getProducts(this.planRoot);
+		TreeItem<PlanNode> rootItem = getProducts(this.planRoot);
 
 		// Create the TreeView
-		TreeView<Node> treeView = new TreeView<Node>();
+		TreeView<PlanNode> treeView = new TreeView<PlanNode>();
 		treeView.setRoot(rootItem);
 		
 		treeView.getSelectionModel().selectedItemProperty()
         .addListener((observable, oldValue, newValue) -> handleTreeClick(newValue));
 		// Create the Root TreeItem
 		
-		//TreeItem<Node> rootItem = new TreeItem<Node>(centrePlan.getRoot());
+		//TreeItem<PlanNode> rootItem = new TreeItem<PlanNode>(centrePlan.getRoot());
 
 		// Add children to the root
 		//rootItem.getChildren().addAll(products);
-		// Set the Root Node
+		// Set the Root PlanNode
 
 		// Create the VBox
 		
@@ -459,14 +459,14 @@ public class FXTreeView extends Application
 	 * @return TreeItem 
 	 * @throws RemoteException if unable to perform action
 	 */
-	public TreeItem<Node> getProducts(Node root) throws RemoteException
+	public TreeItem<PlanNode> getProducts(PlanNode root) throws RemoteException
 	{
 
 		// This will be the final ArrayList passed back to FXTreeView.java for build
 		// (should only hold Mission for centre)
-		//ArrayList<TreeItem<Node>> FinalNodeList = new ArrayList<TreeItem<Node>>();
+		//ArrayList<TreeItem<PlanNode>> FinalNodeList = new ArrayList<TreeItem<PlanNode>>();
 
-		TreeItem<Node> currentTreeItem = new TreeItem<Node>(root);
+		TreeItem<PlanNode> currentTreeItem = new TreeItem<PlanNode>(root);
 
 		//FinalNodeList.add(currentTreeItem);
 
@@ -481,7 +481,7 @@ public class FXTreeView extends Application
 	 * @param parentTreeItem TreeITem
 	 * @param parentNode node
 	 */
-	private void getKids(Node parentNode, TreeItem<Node> parentTreeItem)
+	private void getKids(PlanNode parentNode, TreeItem<PlanNode> parentTreeItem)
 	{
 
 		if (parentNode.getChildren().isEmpty())
@@ -491,7 +491,7 @@ public class FXTreeView extends Application
 
 		for (int i = 0; i < parentNode.getChildren().size(); i++)
 		{
-			TreeItem<Node> newChild = new TreeItem<Node>(parentNode.getChildren().get(i));
+			TreeItem<PlanNode> newChild = new TreeItem<PlanNode>(parentNode.getChildren().get(i));
 
 			parentTreeItem.getChildren().add(newChild);
 			getKids(parentNode.getChildren().get(i), newChild);
@@ -505,7 +505,7 @@ public class FXTreeView extends Application
 	 * 
 	 * @param newValue treeItem
 	 */
-	private void handleTreeClick(TreeItem<Node> newValue)
+	private void handleTreeClick(TreeItem<PlanNode> newValue)
 	{
 		this.textTop.setText(newValue.getValue().getName());
 		this.textFieldCenter.setText(newValue.getValue().getData());
