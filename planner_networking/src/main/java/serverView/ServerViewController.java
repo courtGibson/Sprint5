@@ -1,5 +1,12 @@
 package serverView;
 
+import java.rmi.AccessException;
+import java.rmi.NoSuchObjectException;
+
+import javafx.stage.WindowEvent;
+import javafx.event.EventHandler;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
@@ -14,9 +21,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import loginView.LoginViewController;
 import software_masters.planner_networking.Client;
+//import software_masters.planner_networking.EventHandler;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.Server;
 import software_masters.planner_networking.ServerImplementation;
+//import software_masters.planner_networking.WindowEvent;
 
 public class ServerViewController
 {
@@ -89,7 +98,7 @@ public class ServerViewController
 		if(DefaultServerButton.isSelected()) {
 			try
 			{
-				registry = LocateRegistry.createRegistry(1075);
+				registry = LocateRegistry.createRegistry(1076);
 				ServerImplementation server = new ServerImplementation();
 				actualServer = server;
 				Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
@@ -110,7 +119,7 @@ public class ServerViewController
 			String hostName = OtherServerTextField.getAccessibleText();
 			try
 			{
-				registry = LocateRegistry.getRegistry(hostName, 1075);
+				registry = LocateRegistry.getRegistry(hostName, 1076);
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
 				getConnected(testClient);
@@ -138,8 +147,38 @@ public class ServerViewController
 		
 		primaryStage.getScene().setRoot(mainView);
 		
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() 
+		{
+	          public void handle(WindowEvent we) 
+	          {
+	        	  	System.out.println("unbinding server");
+		      		try
+					{
+						registry.unbind("PlannerServer");
+					} catch (RemoteException | NotBoundException e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+		      		// Unexport; this will also remove us from the RMI runtime
+		      		try
+					{
+						UnicastRemoteObject.unexportObject(registry, true);
+					} catch (NoSuchObjectException e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+		      		System.out.println("Closing RMI Server");
+		      		
+		      		primaryStage.close();
+	      	
+	          }
+	      });  
 		
 		
 		
 	}
+	
+
 }
