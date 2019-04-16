@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="552.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.planView.PlanViewController">
+<BorderPane prefHeight="552.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.planView.PlanViewController">
    <top>
       <Pane prefHeight="84.0" prefWidth="738.0" BorderPane.alignment="CENTER">
          <children>
