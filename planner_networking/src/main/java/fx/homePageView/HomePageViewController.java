@@ -46,6 +46,7 @@ public class HomePageViewController
 	
 	int count = 0;
 	
+	@FXML
 	Button submit;
 	
 	public void makeMenu() throws RemoteException
@@ -107,6 +108,8 @@ public class HomePageViewController
 	public void submit()
 	{
 		// do stuff to set up next view
+		
+		System.out.println("button click");
 	}
 	 
 	
