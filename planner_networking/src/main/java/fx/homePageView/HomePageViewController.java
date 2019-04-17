@@ -3,6 +3,7 @@ package fx.homePageView;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 import fx.choosePlan.ChoosePlanController;
 import javafx.collections.FXCollections;
@@ -45,52 +46,30 @@ public class HomePageViewController
 	
 	
 	public void makeMenu() throws RemoteException
-	{
-		//menu.getItems().addAll();
+	{	
+		//ArrayList<PlanFile> plans = testClient.getPlans();
 		
-		ArrayList<PlanFile> plans = testClient.getPlans();
-		
-		
-		
-		ObservableList<String> planYears = FXCollections.observableArrayList("hello", "words");
-		
-		menu.getItems().addAll(planYears);
-		
-		System.out.println(planYears);
-		
-		/*for(PlanFile p :plans)
-		{
-			planYears.add(p.getYear());
-		
-		}
-		
-		
-		
+		//ObservableList<String> thisArray = new ObservableList<String>();
 
-		
-		//menu.getItems().add("hello");
-		//menu.getItems().add("cat");
-		
-		//Label selected = new Label("Select plan");
-		
-		/*EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() 
-		 { 
-          public void handle(ActionEvent e) 
-          { 
-              selected.setText(menu.getValue());//.getPlan().getName()+menu.getValue().getYear()); 
-          } 
-      }; 
-      
-      menu.setOnAction(event);
-		
-		 for (String s :planYears)
-		 {
-			 menu.getItems().add(s);
-			 
-			 
-			
-		 }*/
+		// Use Java Collections to create the List.
+        List<String> list = new ArrayList<String>();
  
+        // Now add observability by wrapping it with ObservableList.
+        ObservableList<String> thisArray = FXCollections.observableList(list);
+		
+        System.out.println("we are here");
+		thisArray.add("Help");
+		thisArray.add("Please");
+		 
+		//menu.getItems().addAll(thisArray);
+		 
+		//Label selected = new Label("Select plan");
+		 
+		  
+        //selected.setText(menu.getValue().getPlan().getName()+menu.getValue().getYear()); 
+            
+       menu.setItems(thisArray);
+		 
 		 
 		
 	}
