@@ -46,6 +46,7 @@ public class HomePageViewController
 	
 	int count = 0;
 	
+	Button submit;
 	
 	public void makeMenu() throws RemoteException
 	{	
@@ -69,14 +70,13 @@ public class HomePageViewController
         //System.out.println("we are here");
         for (PlanFile p : plans)
         {
-        	thisArray.add("2019");
+        	thisArray.add(p.getYear());
         }
-		thisArray.add("Help");
-		thisArray.add("Please");
 		 
 		//menu.getItems().addAll(thisArray);
 		 
 		//Label selected = new Label("Select plan");
+       
 		 
 		  
         //selected.setText(menu.getValue().getPlan().getName()+menu.getValue().getYear()); 
@@ -89,8 +89,28 @@ public class HomePageViewController
       
 		 
 		 
+  
+	
+	}
+	
+	
+	public void selectPlan() throws IllegalArgumentException, RemoteException
+	{
+		
+		testClient.getPlan(menu.getValue());
+		
+		selectedPlan = testClient.getCurrPlanFile();
+		
 		
 	}
+	
+	public void submit()
+	{
+		// do stuff to set up next view
+	}
+	 
+	
+	
 	
 	
 	

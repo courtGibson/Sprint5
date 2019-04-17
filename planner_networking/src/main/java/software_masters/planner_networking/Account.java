@@ -3,16 +3,22 @@
  */
 package software_masters.planner_networking;
 
+import java.io.Serializable;
+
 /** 
  * @author lee kendall
  * @author wesley murray
  *
  */
-public class Account
+public class Account implements Serializable
 {
 	
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3206965002013003125L;
 	/**
 	 * Object keeps track of each user's password, cookie, department, and admin
 	 * state.

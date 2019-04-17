@@ -64,7 +64,7 @@
                </font>
             </Label>
 
-            <ComboBox id="menu" fx:id="menu" layoutX="186.0" layoutY="183.0" onAction="#makeMenu" onMouseClicked="#makeMenu" prefHeight="25.0" prefWidth="173.0" promptText="Select plan" />
+            <ComboBox id="menu" fx:id="menu" layoutX="186.0" layoutY="183.0" onAction="#selectPlan" onMouseClicked="#makeMenu" prefHeight="25.0" prefWidth="173.0" promptText="Select plan" />
 
          </children>
       </Pane>
