@@ -35,7 +35,7 @@ public class CheckSaveController
 	
 	
 	
-	private void exit() throws IOException
+	public void exit() throws IOException
 	{
 		
 		
@@ -66,7 +66,7 @@ public class CheckSaveController
 		
 	}
 	
-	private void save()
+	public void save()
 	{
 		
 		
