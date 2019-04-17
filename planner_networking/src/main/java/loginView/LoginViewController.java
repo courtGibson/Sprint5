@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -86,24 +87,76 @@ public class LoginViewController
 	@FXML 
 	private Button LoginSubmitButton;
 	
+	@FXML
+	private Label error;
+	
 	
 	@FXML
-	public void onButtonSubmit() throws Exception{
+	public void onButtonSubmit() throws Exception
+	{
+		
+		
 		String username = UsernameTextField.textProperty().get();
 		String password = PasswordTextField.textProperty().get();
 		
 		System.out.println(username);
 		System.out.println(password);
 		// sends to login function
-		testClient.login(username, password);
+		
+		
+	
+		try{
+			
+			testClient.login(username, password);
+	        
+	        
+	    }catch(IllegalArgumentException e)
+		{
+	    	
+			
+			LoginSubmitButton.setOnAction(event -> {
+					try
+					{
+						onButtonSubmit();
+					} catch (Exception e1)
+					{
+						e1.printStackTrace();
+					}
+			
+			});
+			
+			
+	    }
+		
+		
+		if (testClient.getCookie()!=null)
+		{
+			connectIfValid(username);
+		}
+		else
+		{
+			error.setOpacity(1);
+			error.setTranslateX(150);
+			error.setText("Your username or password is incorrect.");
+			//onButtonSubmit();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	private void connectIfValid(String username) throws Exception
+	{
 		System.out.print(testClient.getCookie());
 		System.out.print("logged in");
 		
 		getConnected(testClient, username);
-		
-		
-		
-		
 	}
 
 	// switch scenes
