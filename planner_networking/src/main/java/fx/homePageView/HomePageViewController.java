@@ -50,7 +50,7 @@ public class HomePageViewController
 		//ArrayList<PlanFile> plans = testClient.getPlans();
 		
 		//ObservableList<String> thisArray = new ObservableList<String>();
-		
+
 		// Use Java Collections to create the List.
         List<String> list = new ArrayList<String>();
  
