@@ -58,5 +58,28 @@ public class ChoosePlanController
 	
 	
 	
+	public void choosePlanType()
+	{
+		
+		newPlanYearText.setDisable(true);
+		
+		
+		if(viewPlanBRtn.isSelected())
+		{
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+	}
+	
 	
 }
