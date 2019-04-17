@@ -1,6 +1,7 @@
 package fx.checkSave;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
 import fx.homePageView.HomePageViewController;
 import javafx.fxml.FXML;
@@ -66,11 +67,12 @@ public class CheckSaveController
 		
 	}
 	
-	public void save()
+	public void save() throws IllegalArgumentException, IOException
 	{
 		
-		
-		
+	
+		this.testClient.pushPlan(testClient.getCurrPlanFile());
+		exit();
 		
 	}
 
