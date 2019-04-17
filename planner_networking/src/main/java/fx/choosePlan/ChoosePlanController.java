@@ -36,7 +36,7 @@ public class ChoosePlanController
 {
 	public Plan plan;
 	public Client client;
-	
+	// to commit
 	public void setTestClient(Client testClient)
 	{
 		// TODO Auto-generated method stub
