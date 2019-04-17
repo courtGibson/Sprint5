@@ -24,7 +24,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="user" text="username" translateX="10.0" translateY="20.0">
+                        <Label fx:id="user" text="user" translateX="10.0" translateY="20.0">
                            <font>
                               <Font size="14.0" />
                            </font></Label>
@@ -36,7 +36,7 @@
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <Label fx:id="dept" text="deptment name" translateY="20.0">
+                        <Label fx:id="dept" text="default" translateY="20.0">
                            <font>
                               <Font size="14.0" />
                            </font></Label>
@@ -63,11 +63,9 @@
       </Pane>
    </top>
    <left>
-<<<<<<< HEAD
-      <TreeView id="treeView" fx:id="tree" onMouseMoved="#buildTree" prefHeight="356.0" prefWidth="207.0" BorderPane.alignment="CENTER" />
-=======
-      <TreeView id="treeView" fx:id="tree" onMouseEntered="#changeContent" prefHeight="356.0" prefWidth="207.0" BorderPane.alignment="CENTER" />
->>>>>>> branch 'master' of https://github.com/courtGibson/Sprint3GUI.git
+
+      <TreeView id="treeView" fx:id="tree" onMouseEntered="#changeContent" onMouseMoved="#buildTree" prefHeight="356.0" prefWidth="207.0" BorderPane.alignment="CENTER" />
+
    </left>
    <right>
       <VBox id="rightVBox" fx:id="rightVBox" prefHeight="388.0" prefWidth="139.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
