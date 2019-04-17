@@ -34,7 +34,7 @@ import software_masters.planner_networking.ServerImplementation;
 
 public class ChoosePlanController
 {
-	
+	public Plan plan;
 	
 	public void setTestClient(Client testClient)
 	{
