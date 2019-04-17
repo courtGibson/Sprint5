@@ -5,6 +5,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import fx.choosePlan.ChoosePlanController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -39,7 +41,7 @@ public class HomePageViewController
 	PlanFile selectedPlan;
 	
 	@FXML
-	private ComboBox<PlanFile> menu;
+	private ComboBox<String> menu;
 	
 	
 	public void makeMenu() throws RemoteException
@@ -48,19 +50,47 @@ public class HomePageViewController
 		
 		ArrayList<PlanFile> plans = testClient.getPlans();
 		
-		 
-		 menu.getItems().addAll(plans);
-		 
-		 Label selected = new Label("Select plan");
-		 
-		 EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() 
+		
+		
+		ObservableList<String> planYears = FXCollections.observableArrayList("hello", "words");
+		
+		menu.getItems().addAll(planYears);
+		
+		System.out.println(planYears);
+		
+		/*for(PlanFile p :plans)
+		{
+			planYears.add(p.getYear());
+		
+		}
+		
+		
+		
+
+		
+		//menu.getItems().add("hello");
+		//menu.getItems().add("cat");
+		
+		//Label selected = new Label("Select plan");
+		
+		/*EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() 
 		 { 
-           public void handle(ActionEvent e) 
-           { 
-               selected.setText(menu.getValue().getPlan().getName()+menu.getValue().getYear()); 
-           } 
-       }; 
-		 
+          public void handle(ActionEvent e) 
+          { 
+              selected.setText(menu.getValue());//.getPlan().getName()+menu.getValue().getYear()); 
+          } 
+      }; 
+      
+      menu.setOnAction(event);
+		
+		 for (String s :planYears)
+		 {
+			 menu.getItems().add(s);
+			 
+			 
+			
+		 }*/
+ 
 		 
 		
 	}

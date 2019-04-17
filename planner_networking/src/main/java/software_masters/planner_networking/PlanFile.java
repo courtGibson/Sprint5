@@ -83,6 +83,7 @@ public class PlanFile implements Serializable // extends UnicastRemoteObject
 	public void setPlan(Plan plan)
 	{
 		this.plan = plan;
+		
 	}
 
 	/*
