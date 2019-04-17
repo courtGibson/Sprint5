@@ -108,6 +108,7 @@ public class LoginViewController
 		
 		HomePageViewController cont = loader.getController();
 		cont.setTestClient(testClient);
+		cont.setPrimaryStage(primaryStage);
 		
 		primaryStage.setWidth(800);
 		primaryStage.getScene().setRoot(mainView);
