@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="552.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.planView.PlanViewController">
+<BorderPane onMouseMoved="#buildTree" prefHeight="552.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.planView.PlanViewController">
    <top>
       <Pane prefHeight="84.0" prefWidth="738.0" BorderPane.alignment="CENTER">
          <children>
@@ -78,11 +78,11 @@
                <padding>
                   <Insets top="10.0" />
                </padding></Label>
-            <Button id="removeBtn" fx:id="removeBtn" mnemonicParsing="false" text="Remove" translateX="25.0">
+            <Button id="removeBtn" fx:id="removeBtn" mnemonicParsing="false" onAction="#removeNode" text="Remove" translateX="25.0">
                <VBox.margin>
                   <Insets bottom="50.0" />
                </VBox.margin></Button>
-            <Button id="addBtn" fx:id="addBtn" mnemonicParsing="false" text="Add" translateX="25.0">
+            <Button id="addBtn" fx:id="addBtn" mnemonicParsing="false" onAction="#addNode" text="Add" translateX="25.0">
                <VBox.margin>
                   <Insets bottom="50.0" />
                </VBox.margin>

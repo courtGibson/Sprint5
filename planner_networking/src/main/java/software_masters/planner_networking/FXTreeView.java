@@ -51,6 +51,8 @@ public class FXTreeView extends Application
 	Button btn2;
 	Button btn3;
 	
+	public  TreeView<PlanNode> treeView;
+	
 	static Server testServer;
 	static Client testClient;
 	static Server actualServer;
@@ -399,16 +401,8 @@ public class FXTreeView extends Application
 	 * @return VBox
 	 * @throws RemoteExcpetion
 	 */
-	private VBox makeTree() throws RemoteException
+	public VBox makeTree() throws RemoteException
 	{
-		
-		
-
-		// Create the TreeViewHelper
-//        TreeViewHelper helper = new TreeViewHelper();
-//        // Get the Products
-//
-//        ArrayList<TreeItem> products = helper.getProducts(planRoot);
 
 		TreeItem<PlanNode> rootItem = getProducts(this.planRoot);
 
@@ -418,13 +412,7 @@ public class FXTreeView extends Application
 		
 		treeView.getSelectionModel().selectedItemProperty()
         .addListener((observable, oldValue, newValue) -> handleTreeClick(newValue));
-		// Create the Root TreeItem
-		
-		//TreeItem<PlanNode> rootItem = new TreeItem<PlanNode>(centrePlan.getRoot());
 
-		// Add children to the root
-		//rootItem.getChildren().addAll(products);
-		// Set the Root PlanNode
 
 		// Create the VBox
 		
@@ -442,7 +430,8 @@ public class FXTreeView extends Application
 		treeRoot.getChildren().add(planNameText);
 		//VBox.setAlignment(planNameText, Pos.CENTER);
 		
-	
+		this.treeView = treeView;
+		
 		// Add the TreeView to the VBox
 		treeRoot.getChildren().add(treeView);
 
