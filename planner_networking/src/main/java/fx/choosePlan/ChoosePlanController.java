@@ -61,7 +61,9 @@ public class ChoosePlanController
 	
 	@FXML
 	private TextField newPlanYearText;
+	
 	BorderPane mainView;
+	
 	@FXML
 	private Button planSubBtn;
 	
@@ -86,7 +88,7 @@ public class ChoosePlanController
 			
 			cont.setPrimaryStage(primaryStage);
 			
-			cont.setPlan(plan);
+		
 		
 			
 			primaryStage.getScene().setRoot(mainView);
@@ -98,8 +100,9 @@ public class ChoosePlanController
 		}
 		else // newPlanButton selected
 		{
-			String planYear = newPlanYearText.getAccessibleText();
-			plan.setYear(planYear);
+			String planYear = newPlanYearText.getText();
+			System.out.println(planYear);
+			testClient.getCurrPlanFile().setYear(planYear);
 			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/fx/planView/planView.fxml"));
@@ -110,7 +113,7 @@ public class ChoosePlanController
 			
 			cont.setPrimaryStage(primaryStage);
 			
-			cont.setPlan(plan);
+		
 		
 			
 			primaryStage.getScene().setRoot(mainView);
@@ -123,6 +126,26 @@ public class ChoosePlanController
 		
 		
 		
+	}
+
+
+
+	/**
+	 * @return the plan
+	 */
+	public PlanFile getPlan()
+	{
+		return plan;
+	}
+
+
+
+	/**
+	 * @param plan the plan to set
+	 */
+	public void setPlan(PlanFile plan)
+	{
+		this.plan = plan;
 	}
 
 

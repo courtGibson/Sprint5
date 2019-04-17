@@ -11,24 +11,9 @@ public class PlanViewController
 	Stage primaryStage;
 	BorderPane mainView;
 	Client testClient;
-	PlanFile plan;
 	
 	
-	/**
-	 * @return the plan
-	 */
-	public PlanFile getPlan()
-	{
-		return plan;
-	}
-
-	/**
-	 * @param plan the plan to set
-	 */
-	public void setPlan(PlanFile plan)
-	{
-		this.plan = plan;
-	}
+	
 
 	public Client getTestClient()
 	{

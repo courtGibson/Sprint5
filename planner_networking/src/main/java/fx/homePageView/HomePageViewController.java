@@ -118,6 +118,7 @@ public class HomePageViewController
 		ChoosePlanController cont = loader.getController();
 		cont.setTestClient(this.testClient);
 		cont.setPrimaryStage(primaryStage);
+	
 		
 		primaryStage.getScene().setRoot(mainView);
 	}
