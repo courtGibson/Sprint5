@@ -167,6 +167,7 @@ public class PlanViewController
 	{
 		
 		this.currentNode = newValue.getValue();
+		
 		setContents(currentNode.getData());
 		
 	}
@@ -249,6 +250,14 @@ public class PlanViewController
 	public void setContents(String stringContent) {
 		
 		contents.setText(stringContent);
+	}
+	
+	
+	public void changeContent() {
+		
+		String contentValue = contents.getText();
+		currentNode.setData(contentValue);
+		System.out.println(contentValue);
 	}
 	
 	
