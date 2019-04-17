@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import software_masters.planner_networking.PlanNode;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
@@ -34,16 +35,51 @@ import software_masters.planner_networking.ServerImplementation;
 
 public class ChoosePlanController
 {
-	
-	
+	public Plan plan;
+	public Client testClient;
+	// to commit
 	public void setTestClient(Client testClient)
 	{
-		// TODO Auto-generated method stub
+		this.testClient = testClient;
 		
 	}
 	
 	
+	// make the FXML stuff
 	
+	@FXML
+	private RadioButton viewPlanBRtn;
+	
+	@FXML
+	private RadioButton newPlanRBtn;
+	
+	@FXML
+	private TextField newPlanYearText;
+	
+	
+	
+	public void choosePlanType()
+	{
+		
+		newPlanYearText.setDisable(true);
+		
+		
+		if(viewPlanBRtn.isSelected())
+		{
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+	}
 	
 	
 }
