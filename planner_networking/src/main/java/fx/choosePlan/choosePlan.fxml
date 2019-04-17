@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -53,26 +52,23 @@
                         </TextField>
                      </children>
                   </HBox>
-                  <RadioButton id="viewPlanRBtn" fx:id="viewPlanRBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" GridPane.columnIndex="1">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="thisGroup" />
-                     </toggleGroup></RadioButton>
-                  <RadioButton id="newPlanRBtn" fx:id="newPlanRBtn" mnemonicParsing="false" prefHeight="18.0" prefWidth="46.0" toggleGroup="$thisGroup" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <RadioButton id="viewPlanRBtn" fx:id="viewPlanRBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" GridPane.columnIndex="1" />
+                  <RadioButton id="newPlanRBtn" fx:id="newPlanRBtn" mnemonicParsing="false" prefHeight="18.0" prefWidth="46.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <Button id="planSubBtn" fx:id="planSubBtn" layoutX="188.0" layoutY="231.0" mnemonicParsing="false" onAction="#choosePlanType" prefHeight="36.0" prefWidth="78.0" text="Submit" />
+            <Button fx:id="planSubBtn" layoutX="188.0" layoutY="231.0" mnemonicParsing="false" onAction="#choosePlanType" prefHeight="36.0" prefWidth="78.0" text="Submit" />
          </children>
       </Pane>
    </center>
    <top>
       <HBox prefHeight="106.0" prefWidth="454.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="27.0" prefWidth="127.0" text="Selected Plan:" translateX="120.0" translateY="40.0" underline="true">
+            <Label prefHeight="27.0" prefWidth="127.0" text="Selected Plan:" translateX="175.0" translateY="40.0" underline="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label id="selectedPlanName" fx:id="selectedPlanName" text="plan name" translateX="120.0" translateY="40.0">
+            <Label id="selectedPlanName" fx:id="planName" opacity="0.0" text="plan name" translateX="120.0" translateY="40.0">
                <font>
                   <Font size="18.0" />
                </font>

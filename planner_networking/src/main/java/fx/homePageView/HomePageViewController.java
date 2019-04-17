@@ -49,8 +49,6 @@ public class HomePageViewController
 	
 	int count = 0;
 	
-	@FXML
-	Button submit;
 	
 	@FXML
 	Label user;
@@ -203,21 +201,7 @@ public class HomePageViewController
 
 	
 	
-	
-	public void submitPlan(PlanFile selectedPlan) throws IOException
-	{
-		
-		testClient.setCurrPlanFile(selectedPlan);
-		
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("/choosePlan/choosePlan.fxml"));
-		this.mainView = loader.load();
-		
-		ChoosePlanController cont = loader.getController();
-		cont.setTestClient(testClient);
-		primaryStage.setWidth(50);
-		primaryStage.getScene().setRoot(mainView);
-	}
+
 	
 	
 }
