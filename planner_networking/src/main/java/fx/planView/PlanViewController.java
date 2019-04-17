@@ -290,6 +290,7 @@ public class PlanViewController
 	
 	public void changeContent() {
 		
+		saveBtn.setDisable(false);
 		String contentValue = contents.getText();
 		currentNode.setData(contentValue);
 		System.out.println(contentValue);
