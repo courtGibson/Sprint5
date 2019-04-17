@@ -119,9 +119,9 @@ public class LoginViewController
 		HomePageViewController cont = loader.getController();
 		cont.setUser(username);
 
-		String deptName = this.server.getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();
+		//String deptName = this.server.getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();
 		//System.out.println("deptName: "+deptName);
-		cont.setDept(deptName);
+		//cont.setDept(deptName);
 		cont.setTestClient(testClient);
 		//System.out.println(this.server.getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName());
 		//String deptName = this.server.getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();
