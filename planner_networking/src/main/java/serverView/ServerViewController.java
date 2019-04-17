@@ -99,7 +99,7 @@ public class ServerViewController
 			try
 			{
 
-				registry = LocateRegistry.createRegistry(1077);
+				registry = LocateRegistry.createRegistry(1076);
 
 				ServerImplementation server = new ServerImplementation();
 				actualServer = server;

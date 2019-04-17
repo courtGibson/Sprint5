@@ -1,6 +1,5 @@
 package fx.choosePlan;
 
-import java.io.IOException;
 import java.rmi.AccessException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -8,11 +7,9 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-import fx.planView.PlanViewController;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import software_masters.planner_networking.PlanNode;
@@ -28,10 +25,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import loginView.LoginViewController;
 import software_masters.planner_networking.Centre;
 import software_masters.planner_networking.Client;
-import software_masters.planner_networking.Main;
 import software_masters.planner_networking.Plan;
 import software_masters.planner_networking.PlanFile;
 import software_masters.planner_networking.Server;
@@ -40,11 +35,8 @@ import software_masters.planner_networking.ServerImplementation;
 
 public class ChoosePlanController
 {
-	public PlanFile plan;
+	public Plan plan;
 	public Client testClient;
-	
-	Stage primaryStage;
-	BorderPane mainView;
 	// to commit
 	public void setTestClient(Client testClient)
 	{
@@ -66,48 +58,19 @@ public class ChoosePlanController
 	
 	
 	
-	public void choosePlanType() throws IOException
+	public void choosePlanType()
 	{
 		
-		
+		newPlanYearText.setDisable(true);
 		
 		
 		if(viewPlanBRtn.isSelected())
 		{
 			
-		
 			
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("/fx/planView/planView.fxml"));
-			this.mainView = loader.load();
 			
-			PlanViewController cont = loader.getController();
-			cont.setTestClient(testClient);
-			cont.setPrimaryStage(primaryStage);
-			cont.setPlan(plan);
 			
-			primaryStage.getScene().setRoot(mainView);
 			
-
-			
-		}
-		else // newPlanButton selected
-		{
-			String planYear = newPlanYearText.getAccessibleText();
-			plan.setYear(planYear);
-			
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("/fx/planView/planView.fxml"));
-			this.mainView = loader.load();
-			
-			PlanViewController cont = loader.getController();
-			cont.setTestClient(testClient);
-			cont.setPrimaryStage(primaryStage);
-			
-			cont.setPlan(plan);
-			cont.setPlan(plan);
-			
-			primaryStage.getScene().setRoot(mainView);
 			
 			
 			

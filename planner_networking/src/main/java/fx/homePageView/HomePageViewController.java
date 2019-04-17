@@ -105,11 +105,20 @@ public class HomePageViewController
 		
 	}
 	
-	public void submit()
+	public void submit() throws IOException
 	{
 		// do stuff to set up next view
 		
 		System.out.println("button click");
+		
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/fx/choosePlan/choosePlan.fxml"));
+		this.mainView = loader.load();
+		
+		ChoosePlanController cont = loader.getController();
+		cont.setTestClient(this.testClient);
+		
+		primaryStage.getScene().setRoot(mainView);
 	}
 	 
 	
