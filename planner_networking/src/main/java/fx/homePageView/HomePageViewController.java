@@ -44,35 +44,73 @@ public class HomePageViewController
 	@FXML
 	private ComboBox<String> menu;
 	
+	int count = 0;
+	
+	Button submit;
 	
 	public void makeMenu() throws RemoteException
 	{	
-		//ArrayList<PlanFile> plans = testClient.getPlans();
+		//
 		
 		//ObservableList<String> thisArray = new ObservableList<String>();
 
 		// Use Java Collections to create the List.
         List<String> list = new ArrayList<String>();
+        
+        ArrayList<PlanFile> plans = testClient.getPlans();
+        
+       /* for (PlanFile p :plans)
+        {
+        	list.add(p.getYear());
+        }*/
  
         // Now add observability by wrapping it with ObservableList.
         ObservableList<String> thisArray = FXCollections.observableList(list);
 		
-        System.out.println("we are here");
-		thisArray.add("Help");
-		thisArray.add("Please");
+        //System.out.println("we are here");
+        for (PlanFile p : plans)
+        {
+        	thisArray.add(p.getYear());
+        }
 		 
 		//menu.getItems().addAll(thisArray);
 		 
 		//Label selected = new Label("Select plan");
+       
 		 
 		  
         //selected.setText(menu.getValue().getPlan().getName()+menu.getValue().getYear()); 
             
-       menu.setItems(thisArray);
+	if (count==0)
+	{
+		 menu.setItems(thisArray);
+		 count ++;
+	}
+      
 		 
 		 
+  
+	
+	}
+	
+	
+	public void selectPlan() throws IllegalArgumentException, RemoteException
+	{
+		
+		testClient.getPlan(menu.getValue());
+		
+		selectedPlan = testClient.getCurrPlanFile();
+		
 		
 	}
+	
+	public void submit()
+	{
+		// do stuff to set up next view
+	}
+	 
+	
+	
 	
 	
 	

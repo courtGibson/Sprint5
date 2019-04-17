@@ -259,6 +259,12 @@ public class Client
 		//System.out.println(plans);
 		this.deptPlans = plans;
 		
+		/*for(PlanFile p:plans)
+		{
+			System.out.println("\n\nPrinting plans in get plans");
+			System.out.println(p.getYear());
+		}*/
+		
 		return plans;
 		
 	}
