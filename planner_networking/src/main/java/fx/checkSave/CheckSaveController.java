@@ -73,6 +73,40 @@ public class CheckSaveController
 		
 		
 	}
+
+	/**
+	 * @return the testClient
+	 */
+	public Client getTestClient()
+	{
+		return testClient;
+	}
+
+	/**
+	 * @param testClient the testClient to set
+	 */
+	public void setTestClient(Client testClient)
+	{
+		this.testClient = testClient;
+	}
+
+	/**
+	 * @return the primaryStage
+	 */
+	public Stage getPrimaryStage()
+	{
+		return primaryStage;
+	}
+
+	/**
+	 * @param primaryStage the primaryStage to set
+	 */
+	public void setPrimaryStage(Stage primaryStage)
+	{
+		this.primaryStage = primaryStage;
+	}
+
+
 	
 	
 	

@@ -63,7 +63,11 @@
       </Pane>
    </top>
    <left>
+<<<<<<< HEAD
       <TreeView id="treeView" fx:id="tree" onMouseMoved="#buildTree" prefHeight="356.0" prefWidth="207.0" BorderPane.alignment="CENTER" />
+=======
+      <TreeView id="treeView" fx:id="tree" onMouseEntered="#changeContent" prefHeight="356.0" prefWidth="207.0" BorderPane.alignment="CENTER" />
+>>>>>>> branch 'master' of https://github.com/courtGibson/Sprint3GUI.git
    </left>
    <right>
       <VBox id="rightVBox" fx:id="rightVBox" prefHeight="388.0" prefWidth="139.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
@@ -132,7 +136,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea id="contentsText" fx:id="contents" prefHeight="111.0" prefWidth="289.0">
+                        <TextArea id="contentsText" fx:id="contents" onKeyPressed="#changeContent" prefHeight="111.0" prefWidth="289.0">
                            <HBox.margin>
                               <Insets bottom="175.0" />
                            </HBox.margin>

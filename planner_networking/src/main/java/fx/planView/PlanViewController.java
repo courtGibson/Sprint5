@@ -3,6 +3,7 @@ package fx.planView;
 import java.io.IOException;
 import java.rmi.RemoteException;
 
+import fx.checkSave.CheckSaveController;
 import fx.homePageView.HomePageViewController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -109,18 +110,45 @@ public class PlanViewController
 	public void homepage() throws IOException {
 		System.out.println("homepage");
 		
-		this.testClient = testClient;
+		if(saveBtn.isDisabled())
+		{
 		
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
-		this.mainView = loader.load();
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
+			this.mainView = loader.load();
 		
-		HomePageViewController cont = loader.getController();
-		cont.setTestClient(testClient);
-		cont.setPrimaryStage(primaryStage);
+			HomePageViewController cont = loader.getController();
+			cont.setTestClient(testClient);
+			cont.setPrimaryStage(primaryStage);
 		
-		primaryStage.setWidth(800);
-		primaryStage.getScene().setRoot(mainView);
+			primaryStage.setWidth(800);
+			primaryStage.getScene().setRoot(mainView);
+		}
+		
+		else
+		{
+			
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/fx/checkSave/checkSave.fxml"));
+			this.mainView = loader.load();
+		
+			CheckSaveController cont = loader.getController();
+			cont.setTestClient(testClient);
+			cont.setPrimaryStage(primaryStage);
+		
+			primaryStage.setWidth(800);
+			primaryStage.getScene().setRoot(mainView);
+		}
+			
+			
+			
+			
+			
+		
+		
+		
+		
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -150,6 +178,7 @@ public class PlanViewController
 		removeBtn.setDisable(false);
 		addBtn.setDisable(false);
 		this.currentNode = newValue.getValue();
+		
 		setContents(currentNode.getData());
 		
 		
@@ -256,6 +285,14 @@ public class PlanViewController
 	public void setContents(String stringContent) {
 		
 		contents.setText(stringContent);
+	}
+	
+	
+	public void changeContent() {
+		
+		String contentValue = contents.getText();
+		currentNode.setData(contentValue);
+		System.out.println(contentValue);
 	}
 	
 	
