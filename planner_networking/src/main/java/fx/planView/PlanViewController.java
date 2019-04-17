@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -36,6 +37,9 @@ public class PlanViewController
 	
 	@FXML 
 	private Button logoutButton;
+	
+	@FXML
+	private Label nodeLabel;
 	
 	@FXML 
 	private Button homepageButton;
@@ -175,9 +179,12 @@ public class PlanViewController
 	private void handleTreeClick(TreeItem<PlanNode> newValue)
 	{
 		
+		
 		removeBtn.setDisable(false);
 		addBtn.setDisable(false);
 		this.currentNode = newValue.getValue();
+		
+		nodeLabel.setText(currentNode.getName());
 		
 		setContents(currentNode.getData());
 		
