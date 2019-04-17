@@ -120,7 +120,7 @@ public class HomePageViewController
 		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
 		this.mainView = loader.load();
 		
-		ChoosePlanController cont = loader.getController();
+		LoginViewController cont = loader.getController();
 		cont.setTestClient(this.testClient);
 		cont.setPrimaryStage(primaryStage);
 		
