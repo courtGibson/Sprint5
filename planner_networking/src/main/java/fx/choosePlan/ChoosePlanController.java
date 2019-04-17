@@ -71,6 +71,28 @@ public class ChoosePlanController
 			
 			
 			
+
+			
+			
+		}
+		else // newPlanButton selected
+		{
+			String planYear = newPlanYearText.getAccessibleText();
+			plan.setYear(planYear);
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/fx/planView/planView.fxml"));
+			this.mainView = loader.load();
+			
+			PlanViewController cont = loader.getController();
+			cont.setTestClient(testClient);
+			cont.setPrimaryStage(primaryStage);
+			
+			cont.setPlan(plan);
+			cont.setPlan(plan);
+			
+			primaryStage.getScene().setRoot(mainView);
+
 			
 			
 			
