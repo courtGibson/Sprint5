@@ -114,6 +114,7 @@ public class ChoosePlanController
 			cont.setPrimaryStage(primaryStage);
 			
 		
+			
 		
 			
 			primaryStage.getScene().setRoot(mainView);
