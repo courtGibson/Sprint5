@@ -10,8 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import software_masters.planner_networking.Account;
 import software_masters.planner_networking.Client;
+import software_masters.planner_networking.Department;
 import software_masters.planner_networking.Main;
+import software_masters.planner_networking.Server;
+
 
 
 
@@ -20,6 +24,12 @@ public class LoginViewController
 	Stage primaryStage;
 	BorderPane mainView;
 	Client testClient;
+	Server server;
+	
+	public void setServer(Server server)
+	{
+		this.server = server;
+	}
 	
 	
 	public Stage getPrimaryStage()
@@ -89,7 +99,7 @@ public class LoginViewController
 		System.out.print(testClient.getCookie());
 		System.out.print("logged in");
 		
-		getConnected(testClient);
+		getConnected(testClient, username);
 		
 		
 		
@@ -97,7 +107,7 @@ public class LoginViewController
 	}
 
 	// switch scenes
-	private void getConnected(Client testClient) throws Exception
+	private void getConnected(Client testClient, String username) throws Exception
 	{
 
 		this.testClient = testClient;
@@ -107,8 +117,28 @@ public class LoginViewController
 		this.mainView = loader.load();
 		
 		HomePageViewController cont = loader.getController();
+		cont.setUser(username);
+
+		String deptName = this.server.getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();
+		//System.out.println("deptName: "+deptName);
+		cont.setDept(deptName);
 		cont.setTestClient(testClient);
+		//System.out.println(this.server.getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName());
+		//String deptName = this.server.getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();
+		
+		
+		//Account userAccount = this.cookieMap.get(cookie);
+		// department = userAccount.getDepartment();
+		
+		
 		cont.setPrimaryStage(primaryStage);
+		
+		
+		
+		
+	
+	
+		
 		
 		primaryStage.setWidth(800);
 		primaryStage.getScene().setRoot(mainView);

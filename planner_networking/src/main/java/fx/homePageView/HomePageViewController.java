@@ -49,6 +49,24 @@ public class HomePageViewController
 	@FXML
 	Button submit;
 	
+	@FXML
+	Label user;
+	
+	@FXML
+	Label dept;
+	
+	public void setDept(String deptName)
+	{
+		dept.setText(deptName);
+	}
+	
+	
+	public void setUser(String userName)
+	{
+		user.setText(userName);
+	}
+	
+	
 	public void makeMenu() throws RemoteException
 	{	
 		//
