@@ -44,20 +44,33 @@ public class HomePageViewController
 	@FXML
 	private ComboBox<String> menu;
 	
+	int count = 0;
+	
 	
 	public void makeMenu() throws RemoteException
 	{	
-		//ArrayList<PlanFile> plans = testClient.getPlans();
+		//
 		
 		//ObservableList<String> thisArray = new ObservableList<String>();
 
 		// Use Java Collections to create the List.
         List<String> list = new ArrayList<String>();
+        
+        ArrayList<PlanFile> plans = testClient.getPlans();
+        
+       /* for (PlanFile p :plans)
+        {
+        	list.add(p.getYear());
+        }*/
  
         // Now add observability by wrapping it with ObservableList.
         ObservableList<String> thisArray = FXCollections.observableList(list);
 		
-        System.out.println("we are here");
+        //System.out.println("we are here");
+        for (PlanFile p : plans)
+        {
+        	thisArray.add("2019");
+        }
 		thisArray.add("Help");
 		thisArray.add("Please");
 		 
@@ -68,7 +81,12 @@ public class HomePageViewController
 		  
         //selected.setText(menu.getValue().getPlan().getName()+menu.getValue().getYear()); 
             
-       menu.setItems(thisArray);
+	if (count==0)
+	{
+		 menu.setItems(thisArray);
+		 count ++;
+	}
+      
 		 
 		 
 		
