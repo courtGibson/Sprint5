@@ -35,6 +35,9 @@ public class HomePageViewController
 	
 	@FXML 
 	private Button planSubmitButton;
+	
+	@FXML 
+	private Button logoutButton;
 
 	Stage primaryStage;
 	BorderPane mainView;
@@ -92,6 +95,20 @@ public class HomePageViewController
 		 
   
 	
+	}
+	
+	public void logout() throws IOException {
+		System.out.println("logout");
+		
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
+		this.mainView = loader.load();
+		
+		LoginViewController cont = loader.getController();
+		cont.setTestClient(this.testClient);
+		cont.setPrimaryStage(primaryStage);
+		
+		primaryStage.getScene().setRoot(mainView);
 	}
 	
 	

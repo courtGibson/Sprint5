@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -52,8 +53,11 @@
                         </TextField>
                      </children>
                   </HBox>
-                  <RadioButton id="viewPlanRBtn" fx:id="viewPlanRBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" GridPane.columnIndex="1" />
-                  <RadioButton id="newPlanRBtn" fx:id="newPlanRBtn" mnemonicParsing="false" prefHeight="18.0" prefWidth="46.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <RadioButton id="viewPlanRBtn" fx:id="viewPlanRBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" GridPane.columnIndex="1">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="thisGroup" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton id="newPlanRBtn" fx:id="newPlanRBtn" mnemonicParsing="false" prefHeight="18.0" prefWidth="46.0" toggleGroup="$thisGroup" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Button id="planSubBtn" fx:id="planSubBtn" layoutX="188.0" layoutY="231.0" mnemonicParsing="false" onAction="#choosePlanType" prefHeight="36.0" prefWidth="78.0" text="Submit" />
