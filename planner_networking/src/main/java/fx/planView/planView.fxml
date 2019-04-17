@@ -63,7 +63,7 @@
       </Pane>
    </top>
    <left>
-      <TreeView id="treeView" fx:id="tree" prefHeight="356.0" prefWidth="207.0" BorderPane.alignment="CENTER" />
+      <TreeView id="treeView" fx:id="tree" onMouseMoved="#buildTree" prefHeight="356.0" prefWidth="207.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
       <VBox id="rightVBox" fx:id="rightVBox" prefHeight="388.0" prefWidth="139.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
@@ -89,7 +89,7 @@
                <padding>
                   <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
                </padding></Button>
-            <Button id="saveBtn" fx:id="saveBtn" mnemonicParsing="false" text="Save" translateX="25.0">
+            <Button id="saveBtn" fx:id="saveBtn" mnemonicParsing="false" onAction="#save" text="Save" translateX="25.0">
                <padding>
                   <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
                </padding></Button>

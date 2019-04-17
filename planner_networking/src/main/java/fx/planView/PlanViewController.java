@@ -83,8 +83,11 @@ public class PlanViewController
 		this.mainView = mainView;
 	}
 	
+	@FXML
 	Button saveBtn;
+	@FXML
 	Button removeBtn;
+	@FXML
 	Button addBtn;
 	private Object PlanNode;
 	
@@ -123,7 +126,13 @@ public class PlanViewController
 	@SuppressWarnings("unchecked")
 	public void buildTree() throws RemoteException {
 		
+		
 		if(!builtTree) {
+			
+			removeBtn.setDisable(true);
+			addBtn.setDisable(true);
+			saveBtn.setDisable(true);
+
 			System.out.println("Here");
 			contents.setText("");
 			TreeItem<PlanNode> theRoot = makeTree();
@@ -138,8 +147,13 @@ public class PlanViewController
 	private void handleTreeClick(TreeItem<PlanNode> newValue)
 	{
 		
+		removeBtn.setDisable(false);
+		addBtn.setDisable(false);
 		this.currentNode = newValue.getValue();
 		setContents(currentNode.getData());
+		
+		
+		
 		
 	}
 	
@@ -202,8 +216,14 @@ public class PlanViewController
 		
 		this.testClient.removeBranch();
 		
+		
 		builtTree = false;
 		buildTree();
+		
+		saveBtn.setDisable(false);
+		removeBtn.setDisable(true);
+		addBtn.setDisable(true);
+
 			
 	}
 	
@@ -212,9 +232,24 @@ public class PlanViewController
 		this.testClient.setCurrNode(currentNode);
 		this.testClient.addBranch();
 		
+		
 		builtTree = false;
 		buildTree();
+		saveBtn.setDisable(false);
+		removeBtn.setDisable(true);
+		addBtn.setDisable(true);
 		
+		
+		
+	}
+	
+	public void save() throws IllegalArgumentException, RemoteException 
+	{
+		this.testClient.setCurrNode(currentNode);
+		this.testClient.pushPlan(testClient.getCurrPlanFile());
+		removeBtn.setDisable(true);
+		addBtn.setDisable(true);
+		saveBtn.setDisable(true);
 		
 	}
 
