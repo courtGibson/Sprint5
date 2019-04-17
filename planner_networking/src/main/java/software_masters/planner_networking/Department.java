@@ -15,6 +15,18 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Department implements Serializable
 {
+	
+	String deptName;
+	
+	public void setDeptName(String name)
+	{
+		this.deptName = name;
+	}
+	
+	public String getDeptName()
+	{
+		return this.deptName;
+	}
 
 	/**
 	 * 

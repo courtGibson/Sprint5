@@ -49,8 +49,24 @@ public class HomePageViewController
 	
 	int count = 0;
 	
+	
 	@FXML
-	Button submit;
+	Label user;
+	
+	@FXML
+	Label dept;
+	
+	public void setDept(String deptName)
+	{
+		dept.setText(deptName);
+	}
+	
+	
+	public void setUser(String userName)
+	{
+		user.setText(userName);
+	}
+	
 	
 	public void makeMenu() throws RemoteException
 	{	
@@ -184,21 +200,7 @@ public class HomePageViewController
 
 	
 	
-	
-	public void submitPlan(PlanFile selectedPlan) throws IOException
-	{
-		
-		testClient.setCurrPlanFile(selectedPlan);
-		
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("/choosePlan/choosePlan.fxml"));
-		this.mainView = loader.load();
-		
-		ChoosePlanController cont = loader.getController();
-		cont.setTestClient(testClient);
-		
-		primaryStage.getScene().setRoot(mainView);
-	}
+
 	
 	
 }

@@ -67,7 +67,22 @@ public class ChoosePlanController
 	@FXML
 	private Button planSubBtn;
 	
+	@FXML
+	Label user;
 	
+	@FXML
+	Label dept;
+	
+	public void setDept(String deptName)
+	{
+		dept.setText(deptName);
+	}
+	
+	
+	public void setUser(String userName)
+	{
+		user.setText(userName);
+	}
 	
 	public void choosePlanType() throws IOException
 	{
@@ -118,6 +133,7 @@ public class ChoosePlanController
 		
 			
 			primaryStage.getScene().setRoot(mainView);
+			
 
 			
 			

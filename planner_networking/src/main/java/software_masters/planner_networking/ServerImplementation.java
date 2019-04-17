@@ -45,6 +45,7 @@ public class ServerImplementation implements Server
 	{
 		Department dpt = new Department();
 		this.departmentMap.put("default", dpt);
+		dpt.setDeptName("default");
 
 		Account admin = new Account("admin", "0", dpt, true);
 		Account user = new Account("user", "1", dpt, false);
@@ -251,8 +252,13 @@ public class ServerImplementation implements Server
 	{
 		cookieChecker(cookie);// checks that cookie is valid and that user is admin
 		adminChecker(cookie);
+		
+		Department d = new Department();
+		d.setDeptName(departmentName);
 
-		this.departmentMap.put(departmentName, new Department());
+		this.departmentMap.put(departmentName, d);
+		
+		
 
 	}
 
