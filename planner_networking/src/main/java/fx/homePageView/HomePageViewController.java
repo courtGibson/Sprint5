@@ -3,8 +3,11 @@ package fx.homePageView;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 import fx.choosePlan.ChoosePlanController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -39,27 +42,33 @@ public class HomePageViewController
 	PlanFile selectedPlan;
 	
 	@FXML
-	private ComboBox<PlanFile> menu;
+	private ComboBox<String> menu;
 	
 	
 	public void makeMenu() throws RemoteException
-	{
-		//menu.getItems().addAll();
+	{	
+		//ArrayList<PlanFile> plans = testClient.getPlans();
 		
-		ArrayList<PlanFile> plans = testClient.getPlans();
+		//ObservableList<String> thisArray = new ObservableList<String>();
 		
+		// Use Java Collections to create the List.
+        List<String> list = new ArrayList<String>();
+ 
+        // Now add observability by wrapping it with ObservableList.
+        ObservableList<String> thisArray = FXCollections.observableList(list);
+		
+        System.out.println("we are here");
+		thisArray.add("Help");
+		thisArray.add("Please");
 		 
-		 menu.getItems().addAll(plans);
+		//menu.getItems().addAll(thisArray);
 		 
-		 Label selected = new Label("Select plan");
+		//Label selected = new Label("Select plan");
 		 
-		 EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() 
-		 { 
-           public void handle(ActionEvent e) 
-           { 
-               selected.setText(menu.getValue().getPlan().getName()+menu.getValue().getYear()); 
-           } 
-       }; 
+		  
+        //selected.setText(menu.getValue().getPlan().getName()+menu.getValue().getYear()); 
+            
+       menu.setItems(thisArray);
 		 
 		 
 		
