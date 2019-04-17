@@ -101,7 +101,8 @@ public class ServerViewController
 
 				registry = LocateRegistry.createRegistry(1076);
 
-				ServerImplementation server = new ServerImplementation();
+				ServerImplementation server = ServerImplementation.load();
+				
 				actualServer = server;
 				Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
 				registry.rebind("PlannerServer", stub);
@@ -157,6 +158,14 @@ public class ServerViewController
 	          public void handle(WindowEvent we) 
 	          {
 	        	  	System.out.println("unbinding server");
+	        	  	try
+					{
+						testServer.save();
+					} catch (RemoteException e1)
+					{
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 		      		try
 					{
 						registry.unbind("PlannerServer");
