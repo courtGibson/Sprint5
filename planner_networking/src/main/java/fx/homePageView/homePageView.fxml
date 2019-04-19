@@ -19,7 +19,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="user" text="user" translateX="10.0" translateY="20.0">
+                  <Label fx:id="user" translateX="10.0" translateY="20.0">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -33,7 +33,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="dept" text="default" translateY="20.0">
+                  <Label fx:id="dept" translateY="20.0">
                      <font>
                         <Font size="15.0" />
                      </font>

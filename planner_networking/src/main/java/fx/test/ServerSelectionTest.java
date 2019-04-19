@@ -24,7 +24,6 @@ public class ServerSelectionTest extends ApplicationTest
 	Stage stage;
 	BorderPane mainView;
 
-	//
 	// test clicks
 	// after submit, check to see that server was made
 	

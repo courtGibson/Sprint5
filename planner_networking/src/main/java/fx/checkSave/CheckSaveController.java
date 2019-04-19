@@ -32,10 +32,45 @@ public class CheckSaveController
 	boolean send;
 	
 	
+	String user;
+	String dept;
 	
 	
 	
 	
+	
+	/**
+	 * @return the user
+	 */
+	public String getUser()
+	{
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(String user)
+	{
+		this.user = user;
+	}
+
+	/**
+	 * @return the dept
+	 */
+	public String getDept()
+	{
+		return dept;
+	}
+
+	/**
+	 * @param dept the dept to set
+	 */
+	public void setDept(String dept)
+	{
+		this.dept = dept;
+	}
+
 	public void exit() throws IOException
 	{
 		
@@ -58,7 +93,8 @@ public class CheckSaveController
 			cont.setPrimaryStage(primaryStage);
 			
 
-			
+			cont.setDept(dept);
+			cont.setUser(user);
 			
 			primaryStage.setWidth(800);
 			primaryStage.getScene().setRoot(mainView);
