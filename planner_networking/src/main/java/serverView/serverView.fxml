@@ -38,7 +38,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Default: Local Host" wrappingWidth="385.46142578125" GridPane.rowIndex="1">
+                  <Text id="localText" fx:id="localText" strokeType="OUTSIDE" strokeWidth="0.0" text="Default: Local Host" wrappingWidth="385.46142578125" GridPane.rowIndex="1">
                      <font>
                         <Font size="35.0" />
                      </font>
