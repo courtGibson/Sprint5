@@ -186,6 +186,7 @@ public class ServerViewController
 		      		System.out.println("Closing RMI Server");
 		      		
 		      		primaryStage.close();
+		      		System.exit(0);
 	      	
 	          }
 	      });  
