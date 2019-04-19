@@ -119,7 +119,7 @@ public class ServerViewController
 		}
 		else {
 			
-			String hostName = OtherServerTextField.getAccessibleText();
+			String hostName = OtherServerTextField.getText();
 			try
 			{
 
