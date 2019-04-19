@@ -50,7 +50,43 @@ public class PlanViewController
 	@FXML
 	private TextArea contents;
 	
+	@FXML
+	Label user;
 	
+	@FXML
+	Label dept;
+
+	/**
+	 * @return the user
+	 */
+	public Label getUser()
+	{
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(String userName)
+	{
+		user.setText(userName);
+	}
+
+	/**
+	 * @return the dept
+	 */
+	public Label getDept()
+	{
+		return dept;
+	}
+
+	/**
+	 * @param dept the dept to set
+	 */
+	public void setDept(String deptName)
+	{
+		dept.setText(deptName);
+	}
 
 	public Client getTestClient()
 	{
@@ -107,6 +143,7 @@ public class PlanViewController
 		LoginViewController cont = loader.getController();
 		cont.setTestClient(this.testClient);
 		cont.setPrimaryStage(primaryStage);
+
 		
 		primaryStage.getScene().setRoot(mainView);
 	}
@@ -124,6 +161,11 @@ public class PlanViewController
 			HomePageViewController cont = loader.getController();
 			cont.setTestClient(testClient);
 			cont.setPrimaryStage(primaryStage);
+			
+			
+			
+			cont.setDept(dept.getText());
+			cont.setUser(user.getText());
 		
 			primaryStage.setWidth(800);
 			primaryStage.getScene().setRoot(mainView);
@@ -140,6 +182,8 @@ public class PlanViewController
 			CheckSaveController cont = loader.getController();
 			cont.setTestClient(testClient);
 			cont.setPrimaryStage(primaryStage);
+			cont.setDept(dept.getText());
+			cont.setUser(user.getText());
 		
 			primaryStage.setWidth(500);
 			primaryStage.getScene().setRoot(mainView);

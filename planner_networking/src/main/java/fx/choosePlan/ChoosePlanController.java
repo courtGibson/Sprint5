@@ -42,6 +42,9 @@ public class ChoosePlanController
 	public PlanFile plan;
 	public Client testClient;
 	
+	
+	
+	
 	Stage primaryStage;
 	// to commit
 	public void setTestClient(Client testClient)
@@ -67,21 +70,21 @@ public class ChoosePlanController
 	@FXML
 	private Button planSubBtn;
 	
-	@FXML
-	Label user;
+
+	String user;
 	
-	@FXML
-	Label dept;
+
+	String dept;
 	
 	public void setDept(String deptName)
 	{
-		dept.setText(deptName);
+		this.dept = deptName;
 	}
 	
 	
 	public void setUser(String userName)
 	{
-		user.setText(userName);
+		this.user = userName;
 	}
 	
 	public void choosePlanType() throws IOException
@@ -103,7 +106,12 @@ public class ChoosePlanController
 			
 			cont.setPrimaryStage(primaryStage);
 			
+
+	
+			cont.setDept(dept);
 		
+			
+			cont.setUser(user);
 		
 			
 			primaryStage.getScene().setRoot(mainView);
@@ -125,6 +133,12 @@ public class ChoosePlanController
 			
 			PlanViewController cont = loader.getController();
 			cont.setTestClient(testClient);
+			
+			
+			cont.setDept(dept);
+		
+			
+			cont.setUser(user);
 			
 			cont.setPrimaryStage(primaryStage);
 			

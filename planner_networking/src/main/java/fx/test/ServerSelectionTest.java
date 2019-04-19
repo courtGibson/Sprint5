@@ -30,7 +30,6 @@ public class ServerSelectionTest extends ApplicationTest
 	BorderPane mainView;
 	ServerViewController cont;
 
-	//
 	// test clicks
 	// after submit, check to see that server was made
 	

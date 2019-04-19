@@ -13,7 +13,7 @@ import org.junit.runners.Suite;
 	   //CashViewTest.class
 	})
 	
-	public class TestSuite 
+	public class TestSuite  
 	{
 		
     }
