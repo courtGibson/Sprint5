@@ -9,5 +9,5 @@ import org.testfx.framework.junit.ApplicationTest;
 
 public class ServerSelectionTest extends ApplicationTest
 {
-
+	
 }
