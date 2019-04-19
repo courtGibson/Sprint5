@@ -126,7 +126,7 @@ public class ServerViewController
 
 				
 				
-				if(OtherServerTextField.getText() == "127.0.0.1")
+				if(hostName == "127.0.0.1")
 				{
 					registry = LocateRegistry.createRegistry(1076);
 					ServerImplementation server = ServerImplementation.load();
