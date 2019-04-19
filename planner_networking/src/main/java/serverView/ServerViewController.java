@@ -128,7 +128,7 @@ public class ServerViewController
 				
 				if(OtherServerTextField.getText() == "127.0.0.1")
 				{
-					
+					registry = LocateRegistry.createRegistry(1076);
 					ServerImplementation server = ServerImplementation.load();
 					
 					actualServer = server;
@@ -139,7 +139,7 @@ public class ServerViewController
 					
 				}
 
-				registry = LocateRegistry.getRegistry(hostName, 1077);
+				registry = LocateRegistry.getRegistry(hostName, 1076);
 
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
