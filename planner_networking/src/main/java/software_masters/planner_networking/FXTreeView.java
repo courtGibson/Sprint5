@@ -519,6 +519,8 @@ public class FXTreeView extends Application
 		
 	}
 	
+	
+	
 	/*public void setServer(Server server)
 	{
 		this.testServer = server;
@@ -526,6 +528,7 @@ public class FXTreeView extends Application
 	public Server getServer()
 	{
 		return this.testServer;
+		
 	}
 	/*public void setClient(Client client)
 	{
