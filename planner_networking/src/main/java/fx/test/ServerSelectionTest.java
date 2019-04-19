@@ -29,12 +29,12 @@ public class ServerSelectionTest extends ApplicationTest
 	// after submit, check to see that server was made
 	
 	
-	@Before
+	/*@Before
 	public void init()
 	{
-
+	   
 		
-	}
+	}*/
 	
 	
 	
@@ -54,8 +54,10 @@ public class ServerSelectionTest extends ApplicationTest
 			
 			e.printStackTrace();
 		}
+		
 			
 	}
+	
 	
 	
 	//other methods
