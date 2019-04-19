@@ -1,5 +1,6 @@
 package serverView;
 
+import java.io.FileNotFoundException;
 import java.rmi.AccessException;
 import java.rmi.NoSuchObjectException;
 
@@ -15,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -92,9 +94,12 @@ public class ServerViewController
 	static Server actualServer;
 	static Registry registry;
 	
+	@FXML
+	public Label error;
 	
 	
-	public void connectToServer() {
+	
+	public void connectToServer() throws Exception {
 		if(DefaultServerButton.isSelected()) {
 			try
 			{
@@ -108,11 +113,11 @@ public class ServerViewController
 				registry.rebind("PlannerServer", stub);
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
-				getConnected(testClient);
+				//getConnected(testClient);
 				
 			} catch (Exception e)
 			{
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			
@@ -140,20 +145,35 @@ public class ServerViewController
 				}
 				else
 				{
-					registry = LocateRegistry.getRegistry(hostName, 1076);
+					try
+					{
+						registry = LocateRegistry.getRegistry(hostName, 1076);
+					}
+					catch(IllegalArgumentException e)
+					{
+						error.setOpacity(1);
+					}
 				}
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
 				getConnected(testClient);
 				
-			} catch (Exception e)
+				
+				
+				
+			} catch (IllegalArgumentException e)
 			{
-				// TODO Auto-generated catch block
+				error.setOpacity(1);
 				e.printStackTrace();
 			}
 		}
 		
+
+		
+		
 	}
+	
+
 
 	private void getConnected(Client testClient) throws Exception
 	{
@@ -180,7 +200,7 @@ public class ServerViewController
 						testServer.save();
 					} catch (RemoteException e1)
 					{
-						// TODO Auto-generated catch block
+						
 						e1.printStackTrace();
 					}
 		      		try
@@ -188,7 +208,7 @@ public class ServerViewController
 						registry.unbind("PlannerServer");
 					} catch (RemoteException | NotBoundException e)
 					{
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 		      		// Unexport; this will also remove us from the RMI runtime
@@ -197,7 +217,7 @@ public class ServerViewController
 						UnicastRemoteObject.unexportObject(registry, true);
 					} catch (NoSuchObjectException e)
 					{
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 		      		System.out.println("Closing RMI Server");

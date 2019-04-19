@@ -89,20 +89,16 @@ public class ServerSelectionTest extends ApplicationTest
 	public void checkText()
 	{
 		
-		clickOn("#OtherServerButton");
-		//sleep(1000);
 		clickOn("#DefaultServerButton");
 		//sleep(1000);
 
-        		
-		
 		checkRBText("#localText", "Default: Local Host");
 		checkRBText("#otherText", "Other:");
 		
 		clickOn("#OtherServerButton");
 		//sleep(1000);
 		
-		type("#OtherServerTextField", "127.0.0.1");
+		type("#OtherServerTextField", "127.0.0");
 		
 		//cont.connectToServer();
 		
