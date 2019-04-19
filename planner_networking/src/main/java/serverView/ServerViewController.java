@@ -138,9 +138,10 @@ public class ServerViewController
 					
 					
 				}
-
-				registry = LocateRegistry.getRegistry(hostName, 1076);
-
+				else
+				{
+					registry = LocateRegistry.getRegistry(hostName, 1076);
+				}
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
 				getConnected(testClient);
