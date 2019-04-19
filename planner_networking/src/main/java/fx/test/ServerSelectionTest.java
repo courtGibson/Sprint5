@@ -44,7 +44,7 @@ public class ServerSelectionTest extends ApplicationTest
 		this.stage=stage;
 	
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("cashView/cashView.fxml"));
+		loader.setLocation(Main.class.getResource("serverView/serverView.fxml"));
 		try {
 			Scene s = new Scene(loader.load());
 			ServerViewController cont = loader.getController();
