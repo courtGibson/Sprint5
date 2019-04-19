@@ -28,6 +28,7 @@ public class ServerSelectionTest extends ApplicationTest
 	
 	Stage stage;
 	BorderPane mainView;
+	ServerViewController cont;
 
 	// test clicks
 	// after submit, check to see that server was made
@@ -51,7 +52,7 @@ public class ServerSelectionTest extends ApplicationTest
 		loader.setLocation(Main.class.getResource("/serverView/serverView.fxml"));
 		try {
 			Scene s = new Scene(loader.load());
-			ServerViewController cont = loader.getController();
+			cont = loader.getController();
 			stage.setScene(s);
 			stage.show();
 		} catch (IOException e) {
@@ -73,6 +74,13 @@ public class ServerSelectionTest extends ApplicationTest
 	}
 	
 
+	public void type(String id, String val)
+	{
+		clickOn(id);
+		push(javafx.scene.input.KeyCode.SHORTCUT, javafx.scene.input.KeyCode.A);
+		write(val);
+		
+	}
 	
 	
 	
@@ -82,13 +90,35 @@ public class ServerSelectionTest extends ApplicationTest
 	{
 		
 		clickOn("#OtherServerButton");
-		sleep(1000);
+		//sleep(1000);
 		clickOn("#DefaultServerButton");
-		sleep(1000);
+		//sleep(1000);
+
+        		
 		
 		checkRBText("#localText", "Default: Local Host");
+		checkRBText("#otherText", "Other:");
 		
-
+		clickOn("#OtherServerButton");
+		//sleep(1000);
+		
+		type("#OtherServerTextField", "127.0.0.1");
+		
+		//cont.connectToServer();
+		
+		
+		
+		clickOn("#ServerSubmitButton");
+		
+		assertThat(cont.getTestClient().getServer()!=null);
+		
+	
+	
+	
+	
+	
+	
+	
 	}
 	
 }

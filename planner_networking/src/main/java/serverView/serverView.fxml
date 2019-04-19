@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serverView.ServerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serverView.ServerViewController">
    <top>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Server Selection" underline="true" BorderPane.alignment="CENTER">
          <font>
@@ -69,7 +69,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Other:">
+                        <Text id="otherText" fx:id="otherText" strokeType="OUTSIDE" strokeWidth="0.0" text="Other:">
                            <font>
                               <Font size="35.0" />
                            </font>

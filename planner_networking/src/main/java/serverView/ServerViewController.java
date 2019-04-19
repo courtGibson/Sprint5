@@ -87,7 +87,7 @@ public class ServerViewController
 	@FXML
 	private Button ServerSubmitButton;
 	
-	static Server testServer;
+	private static Server testServer;
 	
 	static Server actualServer;
 	static Registry registry;
@@ -119,9 +119,10 @@ public class ServerViewController
 		}
 		else {
 			
-			String hostName = OtherServerTextField.getText();
+			String hostName = OtherServerTextField.getAccessibleText();
 			try
 			{
+
 
 				
 				
@@ -137,7 +138,9 @@ public class ServerViewController
 					
 					
 				}
+
 				registry = LocateRegistry.getRegistry(hostName, 1077);
+
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
 				getConnected(testClient);
