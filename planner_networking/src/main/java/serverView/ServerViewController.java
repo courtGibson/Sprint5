@@ -124,6 +124,7 @@ public class ServerViewController
 			{
 
 				
+				
 				if(OtherServerTextField.getText() == "127.0.0.1")
 				{
 					
