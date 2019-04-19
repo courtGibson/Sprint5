@@ -119,12 +119,24 @@ public class ServerViewController
 		}
 		else {
 			
-			String hostName = OtherServerTextField.getAccessibleText();
+			String hostName = OtherServerTextField.getText();
 			try
 			{
 
+				
+				if(OtherServerTextField.getText() == "127.0.0.1")
+				{
+					
+					ServerImplementation server = ServerImplementation.load();
+					
+					actualServer = server;
+					Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
+					registry.rebind("PlannerServer", stub);
+					
+					
+					
+				}
 				registry = LocateRegistry.getRegistry(hostName, 1077);
-
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
 				getConnected(testClient);
