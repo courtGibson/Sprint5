@@ -102,7 +102,8 @@ public class ServerViewController
 	
 	
 	
-	public void connectToServer() throws Exception {
+	public void connectToServer() throws Exception 
+	{
 		if(DefaultServerButton.isSelected()) {
 			try
 			{
@@ -116,7 +117,7 @@ public class ServerViewController
 				registry.rebind("PlannerServer", stub);
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
-				//getConnected(testClient);
+				getConnected(testClient);
 				
 			} catch (Exception e)
 			{
@@ -163,11 +164,18 @@ public class ServerViewController
 					}
 				}
 				
+<<<<<<< HEAD
 				System.out.println("hostname: "+ hostName);
 				
+=======
+>>>>>>> branch 'master' of https://github.com/courtGibson/Sprint3GUI.git
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
 				
+<<<<<<< HEAD
+=======
+				getConnected(testClient);
+>>>>>>> branch 'master' of https://github.com/courtGibson/Sprint3GUI.git
 				
 				
 				
