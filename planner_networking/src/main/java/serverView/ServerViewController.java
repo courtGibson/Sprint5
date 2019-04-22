@@ -27,11 +27,14 @@ import software_masters.planner_networking.Client;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.Server;
 import software_masters.planner_networking.ServerImplementation;
+
+import static org.testfx.assertions.api.Assertions.assertThat;
+
 //import software_masters.planner_networking.WindowEvent;
 
 public class ServerViewController
 {
-	
+	//main view needs to be local, change everywhere
 	Stage primaryStage;
 	BorderPane mainView;
 	Client testClient;
@@ -104,7 +107,7 @@ public class ServerViewController
 			try
 			{
 
-				registry = LocateRegistry.createRegistry(1076);
+				registry = LocateRegistry.createRegistry(1077);
 
 				ServerImplementation server = ServerImplementation.load();
 				
@@ -131,9 +134,9 @@ public class ServerViewController
 
 				
 				
-				if(hostName == "127.0.0.1")
+				if(hostName.equals("127.0.0.1"))
 				{
-					registry = LocateRegistry.createRegistry(1076);
+					registry = LocateRegistry.createRegistry(1077);
 					ServerImplementation server = ServerImplementation.load();
 					
 					actualServer = server;
@@ -146,17 +149,25 @@ public class ServerViewController
 				else
 				{
 					try
-					{
-						registry = LocateRegistry.getRegistry(hostName, 1076);
+					{					
+						registry = LocateRegistry.getRegistry(hostName, 1077);
+						ServerImplementation server = ServerImplementation.load();
+						
+						actualServer = server;
+						Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
+						registry.rebind("PlannerServer", stub);
 					}
 					catch(IllegalArgumentException e)
 					{
 						error.setOpacity(1);
 					}
 				}
+				
+				System.out.println("hostname: "+ hostName);
+				
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
-				getConnected(testClient);
+				
 				
 				
 				
@@ -167,6 +178,8 @@ public class ServerViewController
 				e.printStackTrace();
 			}
 		}
+		
+		getConnected(testClient);
 		
 
 		
@@ -183,10 +196,12 @@ public class ServerViewController
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
 		this.mainView = loader.load();
+		assertThat(mainView!=null);
 		
 		LoginViewController cont = loader.getController();
 		cont.setTestClient(testClient);
 		cont.setPrimaryStage(primaryStage);
+		cont.setMainView(mainView);
 		
 		primaryStage.getScene().setRoot(mainView);
 		
