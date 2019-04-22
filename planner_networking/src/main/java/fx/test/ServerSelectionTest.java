@@ -98,7 +98,7 @@ public class ServerSelectionTest extends ApplicationTest
 		clickOn("#OtherServerButton");
 		//sleep(1000);
 		
-		type("#OtherServerTextField", "127.0.0");
+		type("#OtherServerTextField", "127.0.0.1");
 		
 		//cont.connectToServer();
 		
