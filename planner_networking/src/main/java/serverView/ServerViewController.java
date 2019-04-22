@@ -101,23 +101,43 @@ public class ServerViewController
 	public Label error;
 	
 	
+	private void connect(String hostName) throws Exception
+	{
+		
+		if (hostName.equals("127.0.0.1"))
+		{
+			registry = LocateRegistry.createRegistry(1077);
+	
+			ServerImplementation server = ServerImplementation.load();
+			
+			actualServer = server;
+			Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
+			registry.rebind("PlannerServer", stub);
+		}
+		else
+		{
+			registry = LocateRegistry.getRegistry(hostName, 1077);
+			ServerImplementation server = ServerImplementation.load();
+			
+			actualServer = server;
+			Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
+			registry.rebind("PlannerServer", stub);
+		}
+		
+		this.testServer = (Server) registry.lookup("PlannerServer");
+		this.testClient = new Client(testServer);
+
+		getConnected(testClient);
+	}
+	
 	
 	public void connectToServer() throws Exception 
 	{
-		if(DefaultServerButton.isSelected()) {
+		if(DefaultServerButton.isSelected()) 
+		{
 			try
 			{
-
-				registry = LocateRegistry.createRegistry(1077);
-
-				ServerImplementation server = ServerImplementation.load();
-				
-				actualServer = server;
-				Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
-				registry.rebind("PlannerServer", stub);
-				this.testServer = (Server) registry.lookup("PlannerServer");
-				this.testClient = new Client(testServer);
-				getConnected(testClient);
+				connect("127.0.0.1");
 				
 			} catch (Exception e)
 			{
@@ -127,60 +147,20 @@ public class ServerViewController
 			
 		}
 		else {
-			
-			String hostName = OtherServerTextField.getText();
 			try
 			{
-
-
+				String hostName = OtherServerTextField.getText();
+				
+				connect(hostName);	
 				
 				
-				if(hostName.equals("127.0.0.1"))
-				{
-					registry = LocateRegistry.createRegistry(1077);
-					ServerImplementation server = ServerImplementation.load();
-					
-					actualServer = server;
-					Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
-					registry.rebind("PlannerServer", stub);
-					
-					
-					
-				}
-				else
-				{
-					try
-					{					
-						registry = LocateRegistry.getRegistry(hostName, 1077);
-						ServerImplementation server = ServerImplementation.load();
-						
-						actualServer = server;
-						Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
-						registry.rebind("PlannerServer", stub);
-					}
-					catch(IllegalArgumentException e)
-					{
-						error.setOpacity(1);
-					}
-				}
-
-				this.testServer = (Server) registry.lookup("PlannerServer");
-				this.testClient = new Client(testServer);
-
-				getConnected(testClient);
-
-				
-				
-				
-				
-			} catch (IllegalArgumentException e)
+			} catch(IllegalArgumentException e)
 			{
 				error.setOpacity(1);
 				e.printStackTrace();
 			}
 		}
-		
-		getConnected(testClient);
+	
 		
 
 		
