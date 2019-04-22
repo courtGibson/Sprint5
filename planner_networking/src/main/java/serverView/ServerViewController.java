@@ -163,19 +163,12 @@ public class ServerViewController
 						error.setOpacity(1);
 					}
 				}
-				
-<<<<<<< HEAD
-				System.out.println("hostname: "+ hostName);
-				
-=======
->>>>>>> branch 'master' of https://github.com/courtGibson/Sprint3GUI.git
+
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
-				
-<<<<<<< HEAD
-=======
+
 				getConnected(testClient);
->>>>>>> branch 'master' of https://github.com/courtGibson/Sprint3GUI.git
+
 				
 				
 				
