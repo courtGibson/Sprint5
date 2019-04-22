@@ -113,7 +113,7 @@ public class ServerViewController
 				registry.rebind("PlannerServer", stub);
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
-				//getConnected(testClient);
+				getConnected(testClient);
 				
 			} catch (Exception e)
 			{
