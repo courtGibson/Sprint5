@@ -43,6 +43,7 @@ public class ServerSelectionTest extends ApplicationTest
 	
 	
 	
+	
 	@Override
 	public void start(Stage stage) throws Exception 
 	{
@@ -90,13 +91,13 @@ public class ServerSelectionTest extends ApplicationTest
 	{
 		
 		clickOn("#DefaultServerButton");
-		//sleep(1000);
+		sleep(1000);
 
 		checkRBText("#localText", "Default: Local Host");
 		checkRBText("#otherText", "Other:");
 		
 		clickOn("#OtherServerButton");
-		//sleep(1000);
+		sleep(1000);
 		
 		type("#OtherServerTextField", "127.0.0.1");
 		

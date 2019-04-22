@@ -99,7 +99,8 @@ public class ServerViewController
 	
 	
 	
-	public void connectToServer() throws Exception {
+	public void connectToServer() throws Exception 
+	{
 		if(DefaultServerButton.isSelected()) {
 			try
 			{
@@ -154,8 +155,10 @@ public class ServerViewController
 						error.setOpacity(1);
 					}
 				}
+				
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
+				
 				getConnected(testClient);
 				
 				
