@@ -1,6 +1,8 @@
 package fx.test;
 
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.testfx.assertions.api.Assertions.assertThat;
 
 import java.io.IOException;
@@ -9,6 +11,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 import org.assertj.core.api.Assertions;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
@@ -72,24 +75,19 @@ public class ServerSelectionTest extends ApplicationTest
 		primaryStage.setScene(s);
 		primaryStage.show();
 		
-		registry = LocateRegistry.createRegistry(1077);
-		
-		ServerImplementation server = ServerImplementation.load();
-
-		
-		actualServer = server;
-		Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
-		registry.rebind("PlannerServer", stub);
-		
-		this.testServer = (Server) registry.lookup("PlannerServer");
-		this.testClient = new Client(testServer);
-		this.testClient = testClient;
-		cont.setTestClient(testClient);
 		this.cont = cont;
 		
 	
 	}
 	
+//	@After
+//	public void tearDown () throws Exception
+//	{
+//		registry.unbind("PlannerServer");
+//		UnicastRemoteObject.unexportObject(registry, true);
+//		System.out.println("Closing RMI Server");
+//	}
+
 	
 	//other methods
 	public void checkRBText(String id, String val)
@@ -107,11 +105,8 @@ public class ServerSelectionTest extends ApplicationTest
 		
 	}
 	
-	
-	
-    //@test methods
 	@Test
-	public void checkText()
+	public void checkDefaultConnect()
 	{
 		
 		clickOn("#DefaultServerButton");
@@ -121,7 +116,26 @@ public class ServerSelectionTest extends ApplicationTest
 	
 		clickOn("#ServerSubmitButton");
 		
-		assertThat(cont.getTestClient().getServer() != null);
+		assertTrue(primaryStage.getUserData().toString().contains("loginView"));
+		
+	}
+	
+	@Test
+	public void checkOtherConnect()
+	{
+		
+		clickOn("#OtherServerButton");
+		
+		checkRBText("#localText", "Default: Local Host");
+		checkRBText("#otherText", "Other:");
+		
+		clickOn("#OtherServerTextField");
+		write("127.0.0.1");
+		
+		clickOn("#ServerSubmitButton");
+		
+		assertTrue(primaryStage.getUserData().toString().contains("loginView"));
+		
 		
 	}
 	

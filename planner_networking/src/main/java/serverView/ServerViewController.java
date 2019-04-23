@@ -184,7 +184,7 @@ public class ServerViewController
 		cont.setTestClient(testClient);
 		cont.setPrimaryStage(primaryStage);
 		
-		
+		primaryStage.setUserData(cont);
 		primaryStage.getScene().setRoot(newMain);
 		
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() 

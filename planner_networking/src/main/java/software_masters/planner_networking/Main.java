@@ -30,6 +30,7 @@ public class Main extends Application
 		
 		Scene s = new Scene(mainView);
 		primaryStage.setScene(s);
+		primaryStage.setUserData(cont);
 		primaryStage.show();
 		
 		    

@@ -184,6 +184,7 @@ public class LoginViewController
 		
 		cont.setPrimaryStage(primaryStage);
 		
+		primaryStage.setUserData(cont);
 		
 		
 		
