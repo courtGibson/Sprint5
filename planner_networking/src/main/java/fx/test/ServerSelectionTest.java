@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.testfx.assertions.api.Assertions.assertThat;
 
 import java.io.IOException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
@@ -18,57 +21,56 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import serverView.ServerViewController;
+import software_masters.planner_networking.Client;
 import software_masters.planner_networking.Main;
+import software_masters.planner_networking.Server;
+import software_masters.planner_networking.ServerImplementation;
 import javafx.scene.layout.BorderPane;
 
 
 public class ServerSelectionTest extends ApplicationTest
 {
 	
-	//Model model = new Model();
-	
-	Stage stage;
+	static Server testServer;
+	static Client testClient;
+	static Server actualServer;
+	static Registry registry;
+	private Stage primaryStage;
 	BorderPane mainView;
 	ServerViewController cont;
-
-	// test clicks
-	// after submit, check to see that server was made
-	
-	
-	/*@Before
-	public void init()
-	{
-	   
-		
-	}*/
-	
-	
-	
 	
 	@Override
-	public void start(Stage stage) throws Exception 
+	public void start(Stage primaryStage) throws Exception 
 	{
-		this.stage=stage;
-	
-	
-		
+		this.primaryStage = primaryStage;
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/serverView/serverView.fxml"));
-		System.out.println(""+loader.load());
-		BorderPane newView = loader.load();
+		mainView = loader.load();
 
 		
-		cont = loader.getController();
-		cont.setMainView(newView);
-		cont.setPrimaryStage(stage);
+		ServerViewController cont = loader.getController();
+		cont.setMainView(mainView);
+		cont.setPrimaryStage(primaryStage);
 		
-		Scene s = new Scene(newView);
-		stage.setScene(s);
-		stage.show();
+		Scene s = new Scene(mainView);
+		primaryStage.setScene(s);
+		primaryStage.show();
 		
+		registry = LocateRegistry.createRegistry(1077);
 		
+		ServerImplementation server = ServerImplementation.load();
 		
-			
+		actualServer = server;
+		Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
+		registry.rebind("PlannerServer", stub);
+		
+		this.testServer = (Server) registry.lookup("PlannerServer");
+		this.testClient = new Client(testServer);
+		this.testClient = testClient;
+		cont.setTestClient(testClient);
+		this.cont = cont;
+		
+	
 	}
 	
 	
@@ -96,31 +98,14 @@ public class ServerSelectionTest extends ApplicationTest
 	{
 		
 		clickOn("#DefaultServerButton");
-		//sleep(1000);
-
+		
 		checkRBText("#localText", "Default: Local Host");
 		checkRBText("#otherText", "Other:");
-		
-		//clickOn("#OtherServerButton");
-		//sleep(1000);
-		
-		//type("#OtherServerTextField", "127.0.0.1");
-		
-		//cont.connectToServer();
-		
-		
-		
+	
 		clickOn("#ServerSubmitButton");
 		
-		assertThat(cont.getTestClient().getServer()!=null);
+		assertThat(cont.getTestClient().getServer() != null);
 		
-	
-	
-	
-	
-	
-	
-	
 	}
 	
 }
