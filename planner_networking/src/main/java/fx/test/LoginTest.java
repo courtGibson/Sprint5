@@ -76,7 +76,6 @@ public class LoginTest extends ApplicationTest
 	private Stage primaryStage;
 	BorderPane mainView;
 	LoginViewController cont;
-	
 
 	@Override
 	public void start(Stage primaryStage) throws IOException, NotBoundException
