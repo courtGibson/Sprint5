@@ -113,18 +113,49 @@ public class ChoosePlanTest extends ApplicationTest
 	
 	
 	@Test
-	public void testLabels()
+	public void testViewPlan()
 	{
-		assertEquals("View Plan", getText("#viewPlan"));
-		assertEquals("Make new plan with selected plan as the template", getText("#makeNew"));
-		assertEquals("New plan year", getText("#planYear"));
+		clickOn("#viewPlanRBtn");
+		clickOn("#planSubBtn");
 	}
 	
-	private String getText(String id)
+	@Test
+	public void testNewPlan()
 	{
-		Label l = lookup(id).query();
-		String s = l.getText();
-		return s;
+		clickOn("#newPlanRBtn");
+		clickOn("#newPlanYearText");
+		//push(javafx.scene.input.KeyCode.SHORTCUT, javafx.scene.input.KeyCode.A);
+		write("2020");
+		
+		assertEquals(getTextTextField("#newPlanYearText"), "2020");
+		
+		clickOn("#planSubBtn");
+		
+	}
+	
+	String getTextTextField(String id)
+	{
+
+		TextField thisTextField = (TextField) lookup(id).query();
+		return thisTextField.textProperty().get();
+
+	}
+	
+	@Test
+	public void testLabels()
+	{
+		
+		assertEquals("View Plan", getLabelText("#viewPlan"));
+		assertEquals("Make new plan with selected plan as the template", getLabelText("#makeNew"));
+		assertEquals("New plan year", getLabelText("#planYear"));
+		
+	}
+	
+	private String getLabelText(String id)
+	{
+		Label thisLabel = (Label) lookup(id).query();
+		return thisLabel.textProperty().get();
+
 	}
 	
 
