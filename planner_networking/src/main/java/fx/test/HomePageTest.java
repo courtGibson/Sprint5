@@ -92,4 +92,15 @@ public class HomePageTest extends ApplicationTest
 		//this.cont = cont;
 		
 	}
+	
+	public void tearDown() 
+	{
+		registry.unbind("PlannerServer");
+		UnicastRemoteObject.unexportObject(registry, true);
+		System.out.println("Closing RMI Server");
+  		
+		stage.close();
+  		System.exit(0);
+	
+	}
 }
