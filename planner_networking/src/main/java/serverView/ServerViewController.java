@@ -137,7 +137,7 @@ public class ServerViewController
 		{
 			try
 			{
-<<<<<<< HEAD
+
 
 				registry = LocateRegistry.createRegistry(1077);
 
@@ -149,9 +149,8 @@ public class ServerViewController
 				this.testServer = (Server) registry.lookup("PlannerServer");
 				this.testClient = new Client(testServer);
 				//getConnected(testClient);
-=======
+
 				connect("127.0.0.1");
->>>>>>> branch 'master' of https://github.com/courtGibson/Sprint3GUI.git
 				
 			} catch (Exception e)
 			{
@@ -168,7 +167,7 @@ public class ServerViewController
 				connect(hostName);	
 				
 				
-<<<<<<< HEAD
+
 				if(hostName.equals("127.0.0.1"))
 				{
 					registry = LocateRegistry.createRegistry(1077);
@@ -208,10 +207,8 @@ public class ServerViewController
 				
 				
 			} catch (IllegalArgumentException e)
-=======
-			} catch(IllegalArgumentException e)
->>>>>>> branch 'master' of https://github.com/courtGibson/Sprint3GUI.git
 			{
+
 				error.setOpacity(1);
 				e.printStackTrace();
 			}
