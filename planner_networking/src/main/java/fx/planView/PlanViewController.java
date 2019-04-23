@@ -138,14 +138,14 @@ public class PlanViewController
 		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
-		this.mainView = loader.load();
+		//this.mainView = loader.load();
 		
 		LoginViewController cont = loader.getController();
 		cont.setTestClient(this.testClient);
 		cont.setPrimaryStage(primaryStage);
 
 		
-		primaryStage.getScene().setRoot(mainView);
+		primaryStage.getScene().setRoot(loader.load());
 	}
 	
 	public void homepage() throws IOException {
@@ -177,7 +177,7 @@ public class PlanViewController
 			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/fx/checkSave/checkSave.fxml"));
-			this.mainView = loader.load();
+			BorderPane newMain = loader.load();
 		
 			CheckSaveController cont = loader.getController();
 			cont.setTestClient(testClient);
@@ -186,7 +186,7 @@ public class PlanViewController
 			cont.setUser(user.getText());
 		
 			primaryStage.setWidth(500);
-			primaryStage.getScene().setRoot(mainView);
+			primaryStage.getScene().setRoot(newMain);
 		}
 			
 			

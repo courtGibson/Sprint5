@@ -118,13 +118,13 @@ public class HomePageViewController
 		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
-		this.mainView = loader.load();
+		BorderPane newMain = loader.load();
 		
 		LoginViewController cont = loader.getController();
 		cont.setTestClient(this.testClient);
 		cont.setPrimaryStage(primaryStage);
 		
-		primaryStage.getScene().setRoot(mainView);
+		primaryStage.getScene().setRoot(newMain);
 	}
 	
 	

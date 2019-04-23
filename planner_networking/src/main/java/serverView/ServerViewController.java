@@ -28,7 +28,6 @@ import software_masters.planner_networking.Main;
 import software_masters.planner_networking.Server;
 import software_masters.planner_networking.ServerImplementation;
 
-import static org.testfx.assertions.api.Assertions.assertThat;
 
 //import software_masters.planner_networking.WindowEvent;
 
@@ -176,15 +175,17 @@ public class ServerViewController
 		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
-		this.mainView = loader.load();
-		assertThat(mainView!=null);
+		//this.mainView = loader.load();
+		//assertThat(mainView!=null);
+		BorderPane newMain = loader.load();
 		
 		LoginViewController cont = loader.getController();
+		cont.setMainView(newMain);
 		cont.setTestClient(testClient);
 		cont.setPrimaryStage(primaryStage);
-		cont.setMainView(mainView);
 		
-		primaryStage.getScene().setRoot(mainView);
+		
+		primaryStage.getScene().setRoot(newMain);
 		
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() 
 		{
