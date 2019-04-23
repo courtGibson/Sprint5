@@ -80,7 +80,8 @@ public class CheckSaveController
 			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
-			this.mainView = loader.load();
+			//this.mainView = loader.load();
+			BorderPane newMain = loader.load();
 			
 			HomePageViewController cont = loader.getController();
 
@@ -97,7 +98,7 @@ public class CheckSaveController
 			cont.setUser(user);
 			
 			primaryStage.setWidth(800);
-			primaryStage.getScene().setRoot(mainView);
+			primaryStage.getScene().setRoot(newMain);
 			
 
 		

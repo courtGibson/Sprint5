@@ -168,7 +168,7 @@ public class LoginViewController
 		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
-		this.mainView = loader.load();
+		//this.mainView = loader.load();
 		
 		HomePageViewController cont = loader.getController();
 		cont.setUser(username);
@@ -191,7 +191,7 @@ public class LoginViewController
 		
 		
 		primaryStage.setWidth(800);
-		primaryStage.getScene().setRoot(mainView);
+		primaryStage.getScene().setRoot(loader.load());
 		
 		
 		
