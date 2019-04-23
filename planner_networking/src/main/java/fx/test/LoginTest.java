@@ -44,7 +44,7 @@ public class LoginTest extends ApplicationTest
 	@Override
 	public void start(Stage stage) throws Exception
 	{
-
+		System.out.println("Start");
 		this.primaryStage = stage;
 
 		FXMLLoader loader = new FXMLLoader();
@@ -64,38 +64,7 @@ public class LoginTest extends ApplicationTest
 		}
 	}
 	
-	@Before
-	public void setUp () throws Exception 
-	{
-		System.out.println("Starting Test");
-		try
-		{
-			registry = LocateRegistry.createRegistry(1077);
-			
-			ServerImplementation server = ServerImplementation.load();
-			
-			actualServer = server;
-			Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
-			registry.rebind("PlannerServer", stub);
-			
-			this.testServer = (Server) registry.lookup("PlannerServer");
-			this.testClient = new Client(testServer);
-			
-		} catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 	
-	@After
-	public void tearDown () throws Exception
-	{
-		registry.unbind("PlannerServer");
-		UnicastRemoteObject.unexportObject(registry, true);
-		System.out.println("Closing RMI Server");
-	}
 
 	@Test
 	public void testUsernameInput()

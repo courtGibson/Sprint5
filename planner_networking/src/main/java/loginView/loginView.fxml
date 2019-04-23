@@ -63,7 +63,7 @@
                   <TextField id="PasswordTextField" fx:id="PasswordTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="259.0" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <Label fx:id="error" opacity="0.0" prefHeight="18.0" prefWidth="491.0" text="Label" textFill="#f75c4a" translateX="100.0" translateY="30.0">
+            <Label id="error" fx:id="error" opacity="0.0" prefHeight="18.0" prefWidth="491.0" text="Label" textFill="#f75c4a" translateX="100.0" translateY="30.0">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
