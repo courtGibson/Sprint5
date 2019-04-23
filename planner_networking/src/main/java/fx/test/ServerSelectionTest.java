@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.testfx.assertions.api.Assertions.assertThat;
 
 import java.io.IOException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
@@ -18,7 +21,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import serverView.ServerViewController;
+import software_masters.planner_networking.Client;
 import software_masters.planner_networking.Main;
+import software_masters.planner_networking.Server;
+import software_masters.planner_networking.ServerImplementation;
 import javafx.scene.layout.BorderPane;
 
 
@@ -30,6 +36,12 @@ public class ServerSelectionTest extends ApplicationTest
 	Stage stage;
 	BorderPane mainView;
 	ServerViewController cont;
+	Client testClient;
+	
+	private static Server testServer;
+	
+	static Server actualServer;
+	static Registry registry;
 
 	// test clicks
 	// after submit, check to see that server was made
@@ -66,6 +78,16 @@ public class ServerSelectionTest extends ApplicationTest
 		stage.setScene(s);
 		stage.show();
 		
+		
+		/*registry = LocateRegistry.createRegistry(1077);
+		
+		ServerImplementation server = ServerImplementation.load();
+		
+		actualServer = server;
+		Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
+		registry.rebind("PlannerServer", stub);
+		this.testServer = (Server) registry.lookup("PlannerServer");
+		this.testClient = new Client(testServer);*/
 		
 		
 			
