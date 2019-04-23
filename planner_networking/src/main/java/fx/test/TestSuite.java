@@ -8,9 +8,10 @@ import org.junit.runners.Suite;
 	@RunWith(Suite.class)
 
 	@Suite.SuiteClasses({
-	   ServerSelectionTest.class,
-	   //GroceryViewTest.class,
-	   //CashViewTest.class
+	   DefaultServerSelectionTest.class,
+	   OtherServerSelectionTest.class,
+	   LoginTest.class,
+	   //HomePageTest.class
 	})
 	
 	public class TestSuite  
