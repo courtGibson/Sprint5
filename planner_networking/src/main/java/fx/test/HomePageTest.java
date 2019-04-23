@@ -36,8 +36,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import loginView.LoginViewController;
 import serverView.ServerViewController;
@@ -64,20 +66,13 @@ public class HomePageTest extends ApplicationTest
 		this.stage = stage;
 
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
-		try
-		{
-			Scene s = new Scene(loader.load());
-			LoginViewController cont = loader.getController();
-			cont.setPrimaryStage(stage);
-			stage.setScene(s);
-			stage.show();
+		loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
+		Scene s = new Scene(loader.load());
+		HomePageViewController cont = loader.getController();
+		cont.setPrimaryStage(stage);
+		stage.setScene(s);
+		stage.show();
 			
-		} catch (IOException e)
-		{
-
-			e.printStackTrace();
-		}
 	}
 	
 
@@ -111,5 +106,21 @@ public class HomePageTest extends ApplicationTest
 		registry.unbind("PlannerServer");
 		UnicastRemoteObject.unexportObject(registry, true);
 		System.out.println("Closing RMI Server");
+	}
+	
+	
+	@Test
+	public void testMenu()
+	{
+		assertThat(lookup("#menu") == null);
+		
+		clickOn("#menu");
+		//clickOn("#menu");
+		type(KeyCode.DOWN);
+		type(KeyCode.DOWN);
+		type(KeyCode.ENTER);
+		
+		clickOn("#submit");
+		
 	}
 }
