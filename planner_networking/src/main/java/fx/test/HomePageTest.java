@@ -49,9 +49,6 @@ import software_masters.planner_networking.ServerImplementation;
 
 
 
-
-
-
 public class HomePageTest extends ApplicationTest
 {
 	private Server testServer;
@@ -109,14 +106,10 @@ public class HomePageTest extends ApplicationTest
 	}
 	
 	@After
-	public void tearDown() throws AccessException, RemoteException, NotBoundException 
+	public void tearDown () throws Exception
 	{
 		registry.unbind("PlannerServer");
 		UnicastRemoteObject.unexportObject(registry, true);
 		System.out.println("Closing RMI Server");
-  		
-		stage.close();
-  		System.exit(0);
-	
 	}
 }
