@@ -83,7 +83,6 @@ public class LoginTest extends ApplicationTest
 			
 		} catch (Exception e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
