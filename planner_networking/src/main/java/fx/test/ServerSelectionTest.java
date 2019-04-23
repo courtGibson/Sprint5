@@ -49,17 +49,20 @@ public class ServerSelectionTest extends ApplicationTest
 	{
 		this.stage=stage;
 	
+	
+		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/serverView/serverView.fxml"));
-		try {
-			Scene s = new Scene(loader.load());
-			cont = loader.getController();
-			stage.setScene(s);
-			stage.show();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
+		mainView = loader.load();
+
+		
+		cont = loader.getController();
+		cont.setMainView(mainView);
+		cont.setPrimaryStage(stage);
+		
+		Scene s = new Scene(mainView);
+		stage.setScene(s);
+		stage.show();
 		
 		
 		
