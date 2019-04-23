@@ -80,6 +80,7 @@ public class CheckSaveController
 			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
+			//this.mainView = loader.load();
 			BorderPane newMain = loader.load();
 			
 			HomePageViewController cont = loader.getController();

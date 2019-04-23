@@ -99,6 +99,7 @@ public class ChoosePlanController
 			System.out.println("hello");
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/fx/planView/planView.fxml"));
+			//this.mainView = loader.load();
 			BorderPane newMain = loader.load();
 			
 			PlanViewController cont = loader.getController();

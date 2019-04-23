@@ -177,6 +177,7 @@ public class PlanViewController
 			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/fx/checkSave/checkSave.fxml"));
+			//this.mainView = loader.load();
 			BorderPane newMain = loader.load();
 		
 			CheckSaveController cont = loader.getController();
