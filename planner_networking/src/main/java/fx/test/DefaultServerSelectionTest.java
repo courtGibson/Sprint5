@@ -1,5 +1,6 @@
 package fx.test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -31,7 +32,7 @@ import software_masters.planner_networking.ServerImplementation;
 import javafx.scene.layout.BorderPane;
 
 
-public class ServerSelectionTest extends ApplicationTest
+public class DefaultServerSelectionTest extends ApplicationTest
 {
 	
 	static Server testServer;
@@ -41,20 +42,6 @@ public class ServerSelectionTest extends ApplicationTest
 	private Stage primaryStage;
 	BorderPane mainView;
 	ServerViewController cont;
-	
-
-	
-	// test clicks
-	// after submit, check to see that server was made
-	
-	
-	/*@Before
-	public void init()
-	{
-	   
-		
-	}*/
-	
 	
 
 	
@@ -80,16 +67,7 @@ public class ServerSelectionTest extends ApplicationTest
 	
 	}
 	
-//	@After
-//	public void tearDown () throws Exception
-//	{
-//		registry.unbind("PlannerServer");
-//		UnicastRemoteObject.unexportObject(registry, true);
-//		System.out.println("Closing RMI Server");
-//	}
 
-	
-	//other methods
 	public void checkRBText(String id, String val)
 	{
 		assertThat(lookup(id).queryAs(Text.class)).hasText(val);
@@ -118,25 +96,16 @@ public class ServerSelectionTest extends ApplicationTest
 		
 		assertTrue(primaryStage.getUserData().toString().contains("loginView"));
 		
+		assertThat(cont.getTestClient().getCookie() == null);
+		clickOn("#UsernameTextField");
+		write("user");
+		clickOn("#PasswordTextField");
+		write("user");
+		clickOn("#LoginSubmitButton");
+		assertThat(cont.getTestClient().getCookie() != null);
+		
 	}
 	
-	@Test
-	public void checkOtherConnect()
-	{
-		
-		clickOn("#OtherServerButton");
-		
-		checkRBText("#localText", "Default: Local Host");
-		checkRBText("#otherText", "Other:");
-		
-		clickOn("#OtherServerTextField");
-		write("127.0.0.1");
-		
-		clickOn("#ServerSubmitButton");
-		
-		assertTrue(primaryStage.getUserData().toString().contains("loginView"));
-		
-		
-	}
+
 	
 }
