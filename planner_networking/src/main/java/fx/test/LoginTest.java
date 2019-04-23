@@ -41,8 +41,14 @@ public class LoginTest extends ApplicationTest
 	@Override
 	public void start(Stage stage) throws Exception 
 	{
+
 		this.stage=stage;
 	
+
+		System.out.println("Start");
+		
+
+
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
 		try {
@@ -52,12 +58,15 @@ public class LoginTest extends ApplicationTest
 			stage.setScene(s);
 			stage.show();
 		} catch (IOException e) {
-			
+
+		
+		
+
 			e.printStackTrace();
 		}
-		
-			
 	}
+
+
 	
 	  @Test
 	  public void testUsernameInput() {
@@ -66,6 +75,7 @@ public class LoginTest extends ApplicationTest
 		  write("This is the username");
 		  
 		  assertEquals(getText("#UsernameTextField"), "This is the username");
+
 
 		  
 	  }
