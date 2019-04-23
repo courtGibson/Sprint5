@@ -108,7 +108,7 @@ public class HomePageTest extends ApplicationTest
 		
 	}
 	
-	
+	@After
 	public void tearDown() throws AccessException, RemoteException, NotBoundException 
 	{
 		registry.unbind("PlannerServer");
