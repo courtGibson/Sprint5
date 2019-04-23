@@ -117,7 +117,7 @@ public class ChoosePlanTest extends ApplicationTest
 	{
 		assertEquals("View Plan", getText("#viewPlan"));
 		assertEquals("Make new plan with selected plan as the template", getText("#makeNew"));
-		assertEquals("New plan dog", getText("#planYear"));
+		assertEquals("New plan year", getText("#planYear"));
 	}
 	
 	private String getText(String id)
