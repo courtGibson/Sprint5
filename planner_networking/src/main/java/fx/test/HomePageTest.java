@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.testfx.api.FxToolkit;
 
 import java.io.IOException;
+import java.rmi.AccessException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -93,7 +95,7 @@ public class HomePageTest extends ApplicationTest
 		
 	}
 	
-	public void tearDown() 
+	public void tearDown() throws AccessException, RemoteException, NotBoundException 
 	{
 		registry.unbind("PlannerServer");
 		UnicastRemoteObject.unexportObject(registry, true);

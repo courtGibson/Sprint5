@@ -44,7 +44,7 @@ public class LoginTest extends ApplicationTest
 	@Override
 	public void start(Stage stage) throws Exception
 	{
-
+		System.out.println("Start");
 		this.primaryStage = stage;
 
 		FXMLLoader loader = new FXMLLoader();
@@ -64,6 +64,7 @@ public class LoginTest extends ApplicationTest
 		}
 	}
 	
+
 	@Before
 	public void setUp () throws Exception 
 	{
@@ -86,14 +87,6 @@ public class LoginTest extends ApplicationTest
 			e.printStackTrace();
 		}
 		
-	}
-	
-	@After
-	public void tearDown () throws Exception
-	{
-		registry.unbind("PlannerServer");
-		UnicastRemoteObject.unexportObject(registry, true);
-		System.out.println("Closing RMI Server");
 	}
 
 	@Test

@@ -75,6 +75,7 @@ public class LoginTestServer extends ApplicationTest
 	static Registry registry;
 	private Stage primaryStage;
 	BorderPane mainView;
+	LoginViewController cont;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException, NotBoundException
@@ -115,23 +116,59 @@ public class LoginTestServer extends ApplicationTest
 		cont2.setTestClient(testClient);
 		cont2.setPrimaryStage(primaryStage);
 		cont2.setMainView(mainView);
+		this.cont = cont2;
 		
 		primaryStage.getScene().setRoot(mainView);
 		primaryStage.show();
 		
 	}
 	
-	@Test
-	public void test()
+	@After
+	public void tearDown () throws Exception
 	{
+		registry.unbind("PlannerServer");
+		UnicastRemoteObject.unexportObject(registry, true);
+		System.out.println("Closing RMI Server");
+	}
+	
+	@Test
+	public void testGoodUsernamePassword()
+	{
+		assertThat(cont.getTestClient().getCookie() == null);
 		clickOn("#UsernameTextField");
 		write("user");
 		clickOn("#PasswordTextField");
 		write("user");
 		clickOn("#LoginSubmitButton");
+		assertThat(cont.getTestClient().getCookie() != null);
+
+	}
+	
+	@Test
+	public void testBadUsernamePassword()
+	{
+		assertThat(cont.getTestClient().getCookie() == null);
+		assertEquals(getText("#error"), "Label");
+		clickOn("#UsernameTextField");
+		write("user");
+		clickOn("#PasswordTextField");
+		write("notuser");
+		clickOn("#LoginSubmitButton");
+		assertEquals(getText("#error"), "Your username or password is incorrect.");
+		assertThat(cont.getTestClient().getCookie() == null);
 
 		
 		
 	}
+	
+	@SuppressWarnings("unchecked")
+	String getText(String label)
+	{
+
+		Label thisLabel = (Label) lookup(label).query();
+		return thisLabel.textProperty().get();
+
+	}
+
 
 }
