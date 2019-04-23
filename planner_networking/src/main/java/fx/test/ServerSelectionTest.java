@@ -19,6 +19,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import serverView.ServerViewController;
 import software_masters.planner_networking.Main;
+import javafx.scene.layout.BorderPane;
 
 
 public class ServerSelectionTest extends ApplicationTest
@@ -53,14 +54,15 @@ public class ServerSelectionTest extends ApplicationTest
 		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/serverView/serverView.fxml"));
-		mainView = loader.load();
+		System.out.println(""+loader.load());
+		BorderPane newView = loader.load();
 
 		
 		cont = loader.getController();
-		cont.setMainView(mainView);
+		cont.setMainView(newView);
 		cont.setPrimaryStage(stage);
 		
-		Scene s = new Scene(mainView);
+		Scene s = new Scene(newView);
 		stage.setScene(s);
 		stage.show();
 		
