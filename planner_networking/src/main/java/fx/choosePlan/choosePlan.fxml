@@ -28,19 +28,19 @@
                 <RowConstraints maxHeight="61.999975585937506" minHeight="10.0" prefHeight="61.999975585937506" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label prefHeight="18.0" prefWidth="194.0" text="                  View Plan" textAlignment="CENTER">
+                  <Label id="viewPlanLabel" fx:id="viewPlanLabel" prefHeight="18.0" prefWidth="194.0" text="                  View Plan" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="56.0" prefWidth="188.0" text="Make new plan with selected plan as the template" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
+                  <Label id="makeNewLabel" fx:id="newPlanLabel" prefHeight="56.0" prefWidth="188.0" text="Make new plan with selected plan as the template" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="110.0" text="New plan year: ">
+                        <Label id="planYearLabel" fx:id="planYearLabel" prefHeight="18.0" prefWidth="110.0" text="New plan year: ">
                            <font>
                               <Font size="14.0" />
                            </font>

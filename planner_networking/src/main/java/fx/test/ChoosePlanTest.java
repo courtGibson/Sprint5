@@ -112,6 +112,21 @@ public class ChoosePlanTest extends ApplicationTest
 	}
 	
 	
+	@Test
+	public void testLabels()
+	{
+		assertEquals("View Plan", getText("#viewPlan"));
+		assertEquals("Make new plan with selected plan as the template", getText("#makeNew"));
+		assertEquals("New plan dog", getText("#planYear"));
+	}
+	
+	private String getText(String id)
+	{
+		Label l = lookup(id).query();
+		String s = l.getText();
+		return s;
+	}
+	
 
 	
 	

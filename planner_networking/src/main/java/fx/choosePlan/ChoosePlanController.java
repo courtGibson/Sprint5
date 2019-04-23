@@ -70,6 +70,15 @@ public class ChoosePlanController
 	@FXML
 	private Button planSubBtn;
 	
+	@FXML
+	private Label viewPlanLabel;
+	
+	@FXML
+	private Label newPlanLabel;
+	
+	@FXML
+	private Label planYearLabel;
+	
 
 	String user;
 	
