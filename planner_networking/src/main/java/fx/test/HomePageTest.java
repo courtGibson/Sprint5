@@ -12,11 +12,14 @@ import org.testfx.api.FxToolkit;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
 import fx.choosePlan.ChoosePlanController;
+import fx.homePageView.HomePageViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,10 +38,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import loginView.LoginViewController;
+import serverView.ServerViewController;
 import software_masters.planner_networking.Client;
 import software_masters.planner_networking.Main;
 import software_masters.planner_networking.PlanFile;
 import software_masters.planner_networking.Server;
+import software_masters.planner_networking.ServerImplementation;
 
 
 
@@ -47,10 +52,10 @@ import software_masters.planner_networking.Server;
 
 public class HomePageTest extends ApplicationTest
 {
-	static Server testServer;
-	static Client testClient;
-	static Server actualServer;
-	static Registry registry;
+	private Server testServer;
+	private Client testClient;
+	private Server actualServer;
+	private Registry registry;
 	private Stage stage;
 
 	@Override
@@ -59,19 +64,32 @@ public class HomePageTest extends ApplicationTest
 		this.stage=stage;
 	
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
-		try {
-			Scene s = new Scene(loader.load());
-			LoginViewController cont = loader.getController();
-			cont.setPrimaryStage(stage);
-			stage.setScene(s);
-			stage.show();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-		
-			
-	}
+		loader.setLocation(Main.class.getResource("/homePageView/homePageViewView.fxml"));
+		BorderPane newView = loader.load();
 
+		
+		ServerViewController cont = loader.getController();
+		cont.setMainView(newView);
+		cont.setPrimaryStage(stage);
+		
+		Scene s = new Scene(newView);
+		stage.setScene(s);
+		stage.show();
+		
+		registry = LocateRegistry.createRegistry(1077);
+		
+		ServerImplementation server = ServerImplementation.load();
+
+		
+		actualServer = server;
+		Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
+		registry.rebind("PlannerServer", stub);
+		
+		this.testServer = (Server) registry.lookup("PlannerServer");
+		this.testClient = new Client(testServer);
+		this.testClient = testClient;
+		cont.setTestClient(testClient);
+		//this.cont = cont;
+		
+	}
 }
