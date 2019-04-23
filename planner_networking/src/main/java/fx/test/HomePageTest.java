@@ -61,39 +61,53 @@ public class HomePageTest extends ApplicationTest
 	private Stage stage;
 
 	@Override
-	public void start(Stage stage) throws Exception 
+	public void start(Stage stage) throws Exception
 	{
-		this.stage=stage;
-	
+		System.out.println("Start");
+		this.stage = stage;
+
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("/homePageView/homePageViewView.fxml"));
-		BorderPane newView = loader.load();
+		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
+		try
+		{
+			Scene s = new Scene(loader.load());
+			LoginViewController cont = loader.getController();
+			cont.setPrimaryStage(stage);
+			stage.setScene(s);
+			stage.show();
+			
+		} catch (IOException e)
+		{
 
-		
-		ServerViewController cont = loader.getController();
-		cont.setMainView(newView);
-		cont.setPrimaryStage(stage);
-		
-		Scene s = new Scene(newView);
-		stage.setScene(s);
-		stage.show();
-		
-		registry = LocateRegistry.createRegistry(1077);
-		
-		ServerImplementation server = ServerImplementation.load();
+			e.printStackTrace();
+		}
+	}
+	
 
-		
-		actualServer = server;
-		Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
-		registry.rebind("PlannerServer", stub);
-		
-		this.testServer = (Server) registry.lookup("PlannerServer");
-		this.testClient = new Client(testServer);
-		this.testClient = testClient;
-		cont.setTestClient(testClient);
-		//this.cont = cont;
+	@Before
+	public void setUp () throws Exception 
+	{
+		System.out.println("Starting Test");
+		try
+		{
+			registry = LocateRegistry.createRegistry(1077);
+			
+			ServerImplementation server = ServerImplementation.load();
+			
+			actualServer = server;
+			Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
+			registry.rebind("PlannerServer", stub);
+			
+			this.testServer = (Server) registry.lookup("PlannerServer");
+			this.testClient = new Client(testServer);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		
 	}
+	
 	
 	public void tearDown() throws AccessException, RemoteException, NotBoundException 
 	{
