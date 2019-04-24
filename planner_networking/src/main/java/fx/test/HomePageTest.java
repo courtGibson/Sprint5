@@ -70,25 +70,36 @@ public class HomePageTest extends ApplicationTest
 		this.stage = stage;
 		
 		registry = LocateRegistry.createRegistry(1077);
-		
+		System.out.println("Start");
 		ServerImplementation server = ServerImplementation.load();
 		
 		actualServer = server;
 		Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
 		registry.rebind("PlannerServer", stub);
+		System.out.println("Start");
 		
 		this.testServer = (Server) registry.lookup("PlannerServer");
 		
 		this.testClient = new Client(testServer);
-		testClient.login("user", "user");
+		String username = "user";
+		testClient.login(username, "user");
 			
-
+		System.out.println("Start");
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
 		Scene s = new Scene(loader.load());
 		HomePageViewController cont = loader.getController();
+		cont.setUser(username);
+
+		String deptName = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();
+		System.out.println("deptName: "+deptName);
+		cont.setDept(deptName);
+		cont.setTestClient(testClient);
+		
+		cont.setUser(username);
 		
 		cont.setPrimaryStage(stage);
+		
 		stage.setScene(s);
 		stage.show();
 		
