@@ -22,6 +22,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import fx.choosePlan.ChoosePlanController;
 import fx.homePageView.HomePageViewController;
 import javafx.collections.FXCollections;
