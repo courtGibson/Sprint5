@@ -139,13 +139,17 @@ public class PlanViewController
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/loginView/loginView.fxml"));
 		//this.mainView = loader.load();
+		//assertThat(mainView!=null);
+		BorderPane newMain = loader.load();
 		
 		LoginViewController cont = loader.getController();
-		cont.setTestClient(this.testClient);
+		cont.setMainView(newMain);
+		cont.setTestClient(testClient);
 		cont.setPrimaryStage(primaryStage);
-
 		
-		primaryStage.getScene().setRoot(loader.load());
+		primaryStage.setUserData(cont);
+		primaryStage.getScene().setRoot(newMain);
+		
 	}
 	
 	public void homepage() throws IOException {
@@ -161,13 +165,13 @@ public class PlanViewController
 			HomePageViewController cont = loader.getController();
 			cont.setTestClient(testClient);
 			cont.setPrimaryStage(primaryStage);
-			
+			this.testClient = cont.getTestClient();
 			
 			
 			cont.setDept(dept.getText());
 			cont.setUser(user.getText());
 		
-			primaryStage.setWidth(800);
+			primaryStage.setWidth(500);
 			primaryStage.getScene().setRoot(mainView);
 		}
 		

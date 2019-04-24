@@ -98,7 +98,7 @@ public class HomePageTest extends ApplicationTest
 		cont.setUser(username);
 		
 		cont.setPrimaryStage(stage);
-		
+		stage.setWidth(500);
 		stage.setScene(s);
 		stage.show();
 		
@@ -123,7 +123,8 @@ public class HomePageTest extends ApplicationTest
 		//assertEquals(true, ((Node) lookup("#menu")).);
 		assertEquals("Select plan", getComboBoxText("#menu"));
 		clickOn("#menu");
-	
+		
+		//type(KeyCode.DOWN);
 		clickOn("2019");
 		
 		clickOn("#submit");

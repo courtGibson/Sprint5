@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.choosePlan.ChoosePlanController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.choosePlan.ChoosePlanController">
    <center>
       <Pane prefHeight="306.0" prefWidth="454.0" BorderPane.alignment="CENTER">
          <children>
@@ -63,7 +63,7 @@
    <top>
       <HBox prefHeight="106.0" prefWidth="454.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="27.0" prefWidth="127.0" text="Selected Plan:" translateX="175.0" translateY="40.0" underline="true">
+            <Label prefHeight="27.0" prefWidth="161.0" text="Selected Plan:" translateX="175.0" translateY="40.0" underline="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

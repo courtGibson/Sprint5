@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="374.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.checkSave.CheckSaveController">
+<BorderPane prefHeight="374.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.checkSave.CheckSaveController">
    <center>
       <Pane prefHeight="300.0" prefWidth="455.0" BorderPane.alignment="CENTER">
          <children>
@@ -34,12 +34,12 @@
                   <Insets top="30.0" />
                </VBox.margin>
                <font>
-                  <Font size="24.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
-            <Label text="Would you like to save before exiting?" translateX="22.0">
+            <Label prefHeight="30.0" prefWidth="420.0" text="Would you like to save before exiting?" translateX="22.0">
                <font>
-                  <Font size="24.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
          </children>
