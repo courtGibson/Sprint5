@@ -244,9 +244,27 @@ public class PlanViewTest extends ApplicationTest{
 		Button thisButton = (Button) lookup("#LoginSubmitButton").query();
 		assertEquals(thisButton.getText(), "Submit");
 		
+		navigateToPage();
+		
+		doubleClickOn("Mission");
 		
 		
-
+		clickOn("#contents");
+		write(" Exit");
+		
+		clickOn("#homepageButton");
+		clickOn("#checkExit");
+		
+		clickOn("#menu");
+		clickOn("2019");
+		clickOn("#submit");
+		clickOn("#viewPlanRBtn");
+		clickOn("#planSubBtn");
+		clickOn("#tree");
+		clickOn("Mission");
+		
+		assertEquals(getTextTextArea("#contents"), "Check save");
+		
 	}
 	
 
