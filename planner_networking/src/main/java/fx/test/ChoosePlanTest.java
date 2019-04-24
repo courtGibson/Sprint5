@@ -72,36 +72,33 @@ public class ChoosePlanTest extends ApplicationTest
 		loader.setLocation(Main.class.getResource("/fx/choosePlan/choosePlan.fxml"));
 		Scene s = new Scene(loader.load());
 		ChoosePlanController cont = loader.getController();
+		
+		
+		registry = LocateRegistry.createRegistry(1077);
+		
+		ServerImplementation server = ServerImplementation.load();
+		
+		actualServer = server;
+		Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
+		registry.rebind("PlannerServer", stub);
+		
+		this.testServer = (Server) registry.lookup("PlannerServer");
+		this.testClient = new Client(testServer);
+		String username = "user";
+		testClient.login(username, "user");
+		testClient.getPlan("2019");
+		cont.setTestClient(testClient);
+		String deptName = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();
+		System.out.println("deptName: "+deptName);
+		cont.setDept(deptName);
+		cont.setTestClient(testClient);
+		cont.setUser(username);
 		cont.setPrimaryStage(stage);
 		stage.setScene(s);
 		stage.show();
 			
 	}
-	
 
-	@Before
-	public void setUp () throws Exception 
-	{
-		System.out.println("Starting Test");
-		try
-		{
-			registry = LocateRegistry.createRegistry(1077);
-			
-			ServerImplementation server = ServerImplementation.load();
-			
-			actualServer = server;
-			Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
-			registry.rebind("PlannerServer", stub);
-			
-			this.testServer = (Server) registry.lookup("PlannerServer");
-			this.testClient = new Client(testServer);
-			
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		
-	}
 	
 	@After
 	public void tearDown () throws Exception
@@ -145,9 +142,9 @@ public class ChoosePlanTest extends ApplicationTest
 	public void testLabels()
 	{
 		
-		assertEquals("View Plan", getLabelText("#viewPlan"));
-		assertEquals("Make new plan with selected plan as the template", getLabelText("#makeNew"));
-		assertEquals("New plan year", getLabelText("#planYear"));
+		assertEquals("View Plan", getLabelText("#viewPlanLabel"));
+		assertEquals("Make new plan with selected plan as the template", getLabelText("#newPlanLabel"));
+		assertEquals("New plan year: ", getLabelText("#planYearLabel"));
 		
 	}
 	
