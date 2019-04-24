@@ -216,29 +216,40 @@ public class PlanViewController
 			addBtn.setDisable(true);
 			saveBtn.setDisable(true);
 
-			System.out.println("Here");
+		
 			contents.setText("");
+
 			TreeItem<PlanNode> theRoot = makeTree();
+
 			tree.setRoot(theRoot);
+
 			
 			tree.getSelectionModel().selectedItemProperty()
 	        .addListener((observable, oldValue, newValue) -> handleTreeClick((TreeItem<PlanNode>) newValue));
+
 			builtTree = true;
+
 		}
 	}
 	
 	private void handleTreeClick(TreeItem<PlanNode> newValue)
 	{
-		
-		
+		try {
+
 		removeBtn.setDisable(false);
+
 		addBtn.setDisable(false);
+
 		this.currentNode = newValue.getValue();
+	
 		
 		nodeLabel.setText(currentNode.getName());
 		
 		setContents(currentNode.getData());
-		
+		}
+		catch (Exception E){
+			
+		}
 		
 		
 		
@@ -351,7 +362,7 @@ public class PlanViewController
 		saveBtn.setDisable(false);
 		String contentValue = contents.getText();
 		currentNode.setData(contentValue);
-		System.out.println(contentValue);
+		
 	}
 	
 	
