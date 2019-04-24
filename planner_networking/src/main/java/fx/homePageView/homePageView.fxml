@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="565.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.homePageView.HomePageViewController">
+<BorderPane prefHeight="565.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.homePageView.HomePageViewController">
    <top>
       <HBox prefHeight="65.0" prefWidth="738.0" BorderPane.alignment="CENTER">
          <children>
@@ -57,7 +57,7 @@
                   <Font size="35.0" />
                </font>
             </Label>
-            <Button id="submitPlanBtn" fx:id="submit" layoutX="209.0" layoutY="290.0" mnemonicParsing="false" onAction="#submit" text="Submit Selection" />
+            <Button id="submit" fx:id="submit" layoutX="209.0" layoutY="290.0" mnemonicParsing="false" onAction="#submit" text="Submit Selection" />
             <Label layoutX="202.0" layoutY="141.0" text="Department Plans">
                <font>
                   <Font size="18.0" />
