@@ -44,7 +44,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="homepageButton" mnemonicParsing="false" onAction="#homepage" text="Home Page" translateX="120.0" translateY="20.0" />
+                        <Button id="homepageButton" fx:id="homepageButton" mnemonicParsing="false" onAction="#homepage" text="Home Page" translateX="120.0" translateY="20.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -134,7 +134,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea id="contents" fx:id="contents" onKeyPressed="#changeContent" prefHeight="111.0" prefWidth="289.0">
+                        <TextArea id="contents" fx:id="contents" onKeyReleased="#changeContent" onMouseExited="#changeContent" prefHeight="111.0" prefWidth="289.0">
                            <HBox.margin>
                               <Insets bottom="175.0" />
                            </HBox.margin>

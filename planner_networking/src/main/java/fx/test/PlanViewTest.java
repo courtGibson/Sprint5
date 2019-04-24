@@ -19,10 +19,13 @@ import java.rmi.server.UnicastRemoteObject;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -144,18 +147,110 @@ public class PlanViewTest extends ApplicationTest{
 		doubleClickOn("Assessment Process");
 		clickOn("Results");
 		
-		//assertEquals(getTextLabel("#nodeLabel"), "Results");
+		assertEquals(getTextLabel("#nodeLabel"), "Results");
 		
+		
+		//Checking changing content
 		clickOn("#contents");
 		write("Add some good content here");
-		//clickOn("#tree");
-		//clickOn("Mission");
-		//clickOn("#logoutButton");
+		clickOn("#tree");
+		clickOn("Mission");
+		clickOn("Goal");
+		clickOn("Learning Objective");
+		clickOn("Assessment Process");
+		clickOn("Results");
+		
+		assertEquals(getTextTextArea("#contents"), "Add some good content here");
+		
+		//Check add branch
+		TreeView thisTree = (TreeView) lookup("#tree").query();
+		assertEquals(thisTree.getRoot().getChildren().size(), 1);
+		clickOn("Goal");
+		clickOn("#addBtn");
+		
+		clickOn("#tree");
+		clickOn("Mission");
+		doubleClickOn("Mission");
+		
+	
+		assertEquals(thisTree.getRoot().getChildren().size(), 2);
+		
+		//Check remove branch
+		assertEquals(thisTree.getRoot().getChildren().size(), 2);
+		
+		clickOn("Goal");
+		clickOn("#removeBtn");
+		clickOn("#tree");
+		clickOn("Mission");
+		doubleClickOn("Mission");
+		assertEquals(thisTree.getRoot().getChildren().size(), 1);
+		
+		
+		
+		//Check homepage button
+		
+
+		doubleClickOn("Goal");
+		doubleClickOn("Learning Objective");
+		doubleClickOn("Assessment Process");
+		clickOn("Results");
+		clickOn("#contents");
+		write("Add some good content here");
+		
+		assertEquals(getTextTextArea("#contents"), "Add some good content here");
+		clickOn("#homepageButton");
+		clickOn("#checkSave");
+		
+		//Check that save worked by looking for text about good content
+		clickOn("#menu");
+		clickOn("2019");
+		clickOn("#submit");
+		clickOn("#viewPlanRBtn");
+		clickOn("#planSubBtn");
+		clickOn("#tree");
+		clickOn("Mission");
+		doubleClickOn("Mission");
+		doubleClickOn("Goal");
+		doubleClickOn("Learning Objective");
+		doubleClickOn("Assessment Process");
+		
+		clickOn("Results");
+		
+		
+		assertEquals(getTextTextArea("#contents"), "Add some good content here");
+		
+		
+		//Check save button
+		clickOn("Mission");
+		clickOn("#contents");
+		write("Check save");
+		clickOn("#saveBtn");
+		clickOn("#homepageButton");
+		
+		clickOn("#menu");
+		clickOn("2019");
+		clickOn("#submit");
+		clickOn("#viewPlanRBtn");
+		clickOn("#planSubBtn");
+		clickOn("#tree");
+		clickOn("Mission");
+		clickOn("#contents");
+		
+		assertEquals(getTextTextArea("#contents"), "Check save");
+		
+		clickOn("#logoutButton");
+		
+		
+		Button thisButton = (Button) lookup("#LoginSubmitButton").query();
+		assertEquals(thisButton.getText(), "Submit");
+		
 		
 		
 
 	}
 	
+
+
 	public void navigateToPage()
 	{
 		clickOn("#UsernameTextField");
@@ -178,6 +273,15 @@ public class PlanViewTest extends ApplicationTest{
 	{
 
 		Label thisLabel = (Label) lookup(label).query();
+		return thisLabel.textProperty().get();
+
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String getTextTextArea(String label)
+	{
+
+		TextArea thisLabel = (TextArea) lookup(label).query();
 		return thisLabel.textProperty().get();
 
 	}
