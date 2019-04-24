@@ -36,6 +36,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -62,6 +63,7 @@ public class HomePageTest extends ApplicationTest
 	private Server actualServer;
 	private Registry registry;
 	private Stage stage;
+	private HomePageViewController cont;
 
 	@Override
 	public void start(Stage stage) throws Exception
@@ -85,7 +87,7 @@ public class HomePageTest extends ApplicationTest
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
 		Scene s = new Scene(loader.load());
-		HomePageViewController cont = loader.getController();
+		cont = loader.getController();
 		cont.setUser(username);
 
 		String deptName = testClient.getServer().getCookieMap().get(testClient.getCookie()).getDepartment().getDeptName();
@@ -113,33 +115,20 @@ public class HomePageTest extends ApplicationTest
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testMenu()
 	{
 		//assertEquals(true, ((Node) lookup("#menu")).);
 		assertEquals("Select plan", getComboBoxText("#menu"));
 		clickOn("#menu");
-		//clickOn("#menu");
-		type(KeyCode.DOWN);
-		//type(KeyCode.DOWN);
-		type(KeyCode.ENTER);
+	
+		clickOn("2019");
 		
-		
-		// Won't let me click on a menu item, cant convert node to combo box but
-		// can't find another way to get it . . . 
-		
-		/*Node n =  (Node) ((ComboBox<?>) lookup("#menu")).getItems().get(0);
-		((Node) n).setId("newItem");*/
-		
-		//clickOn(((ComboBox<String>) lookup("#menu")).getSelectionModel().selectFirst().get);
-		
-		//clickOn("#newItem");
-		
-		//assertEquals(getComboBoxText("#menu"), "2017");
-		
-		//clickOn("#submit");
+		clickOn("#submit");
 		
 	}
+
 	
 	
 	
