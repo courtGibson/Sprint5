@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="565.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.homePageView.HomePageViewController">
+<BorderPane prefHeight="565.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.homePageView.HomePageViewController">
    <top>
       <HBox prefHeight="65.0" prefWidth="738.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="66.0" prefWidth="201.0" style="-fx-background-color: lightgrey;">
                <children>
-                  <Label prefHeight="22.0" prefWidth="87.0" text="Username: " translateX="10.0" translateY="20.0" underline="true">
+                  <Label prefHeight="22.0" prefWidth="108.0" text="Username: " translateX="10.0" translateY="20.0" underline="true">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -28,7 +28,7 @@
             </HBox>
             <HBox prefHeight="66.0" prefWidth="268.0" style="-fx-background-color: lightgrey;">
                <children>
-                  <Label contentDisplay="CENTER" prefHeight="22.0" prefWidth="101.0" text="Department: " translateY="20.0" underline="true">
+                  <Label contentDisplay="CENTER" prefHeight="22.0" prefWidth="121.0" text="Department: " translateY="20.0" underline="true">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
