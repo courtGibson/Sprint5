@@ -92,7 +92,6 @@ public class HomePageTest extends ApplicationTest
 		System.out.println("deptName: "+deptName);
 		cont.setDept(deptName);
 		cont.setTestClient(testClient);
-		
 		cont.setUser(username);
 		
 		cont.setPrimaryStage(stage);
