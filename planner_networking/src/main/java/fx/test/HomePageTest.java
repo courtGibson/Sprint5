@@ -22,6 +22,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import fx.choosePlan.ChoosePlanController;
 import fx.homePageView.HomePageViewController;
 import javafx.collections.FXCollections;
@@ -131,6 +132,8 @@ public class HomePageTest extends ApplicationTest
 		assertEquals("2019", cont.getTestClient().getCurrPlanFile().getYear());
 		
 	}
+	
+
 
 	
 	
@@ -161,10 +164,20 @@ public class HomePageTest extends ApplicationTest
 	@Test
 	public void testLabels()
 	{
-		// fxml doesn't have the labels??
-		// should we just take it out or try to figure it out?
+		// labels based on what client is logged on
+		assertEquals(getTextLabel("#user"), "user");
+		assertEquals(getTextLabel("#dept"), "default");
+		
+		
 	}
 	
+	String getTextLabel(String label)
+	{
+
+		Label thisLabel = (Label) lookup(label).query();
+		return thisLabel.textProperty().get();
+
+	}
 	
 	
 	
