@@ -122,7 +122,8 @@ public class HomePageTest extends ApplicationTest
 		//assertEquals(true, ((Node) lookup("#menu")).);
 		assertEquals("Select plan", getComboBoxText("#menu"));
 		clickOn("#menu");
-	
+		
+		//type(KeyCode.DOWN);
 		clickOn("2019");
 		
 		clickOn("#submit");
