@@ -120,9 +120,9 @@ public class HomePageTest extends ApplicationTest
 		assertEquals("Select plan", getComboBoxText("#menu"));
 		clickOn("#menu");
 		//clickOn("#menu");
-		/*type(KeyCode.DOWN);
 		type(KeyCode.DOWN);
-		type(KeyCode.ENTER);*/
+		//type(KeyCode.DOWN);
+		type(KeyCode.ENTER);
 		
 		
 		// Won't let me click on a menu item, cant convert node to combo box but
