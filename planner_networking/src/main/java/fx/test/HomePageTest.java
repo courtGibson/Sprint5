@@ -68,41 +68,34 @@ public class HomePageTest extends ApplicationTest
 	{
 		System.out.println("Start");
 		this.stage = stage;
+		
+		registry = LocateRegistry.createRegistry(1077);
+		
+		ServerImplementation server = ServerImplementation.load();
+		
+		actualServer = server;
+		Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
+		registry.rebind("PlannerServer", stub);
+		
+		this.testServer = (Server) registry.lookup("PlannerServer");
+		
+		this.testClient = new Client(testServer);
+		testClient.login("user", "user");
+			
 
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
 		Scene s = new Scene(loader.load());
 		HomePageViewController cont = loader.getController();
+		
 		cont.setPrimaryStage(stage);
 		stage.setScene(s);
 		stage.show();
-			
-	}
-	
-
-	@Before
-	public void setUp () throws Exception 
-	{
-		System.out.println("Starting Test");
-		try
-		{
-			registry = LocateRegistry.createRegistry(1077);
-			
-			ServerImplementation server = ServerImplementation.load();
-			
-			actualServer = server;
-			Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
-			registry.rebind("PlannerServer", stub);
-			
-			this.testServer = (Server) registry.lookup("PlannerServer");
-			this.testClient = new Client(testServer);
-			
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+		
+		
 		
 	}
+	
 	
 	@After
 	public void tearDown () throws Exception
