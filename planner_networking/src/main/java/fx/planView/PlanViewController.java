@@ -132,7 +132,7 @@ public class PlanViewController
 	Button addBtn;
 	private Object PlanNode;
 	
-	
+	// lets never touch this again... it works
 	public void logout() throws IOException {
 		System.out.println("logout");
 		
