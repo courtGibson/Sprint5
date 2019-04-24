@@ -131,11 +131,26 @@ public class PlanViewTest extends ApplicationTest{
 	}
 
 	@Test
-	public void testGoodUsernamePassword()
+	public void testMakingSureTreeLoads()
 	{
-		
+		//Want to show the last node of a standard plan exists
 		navigateToPage();
-
+		
+		
+		clickOn("Mission");
+		doubleClickOn("Mission");
+		doubleClickOn("Goal");
+		doubleClickOn("Learning Objective");
+		doubleClickOn("Assessment Process");
+		clickOn("Results");
+		
+		//assertEquals(getTextLabel("#nodeLabel"), "Results");
+		
+		clickOn("#contents");
+		write("Add some good content here");
+		//clickOn("#tree");
+		//clickOn("Mission");
+		//clickOn("#logoutButton");
 		
 		
 
@@ -149,12 +164,23 @@ public class PlanViewTest extends ApplicationTest{
 		write("user");
 		clickOn("#LoginSubmitButton");
 		clickOn("#menu");
-		clickOn("2017");
+		clickOn("2019");
 		clickOn("#submit");
+		clickOn("#viewPlanRBtn");
+		clickOn("#planSubBtn");
+		clickOn("#tree");
 		
 		
 	}
 
+	@SuppressWarnings("unchecked")
+	public String getTextLabel(String label)
+	{
+
+		Label thisLabel = (Label) lookup(label).query();
+		return thisLabel.textProperty().get();
+
+	}
 
 
 }
