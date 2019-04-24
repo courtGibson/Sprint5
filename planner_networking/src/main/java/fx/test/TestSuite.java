@@ -11,7 +11,8 @@ import org.junit.runners.Suite;
 	   DefaultServerSelectionTest.class,
 	   OtherServerSelectionTest.class,
 	   LoginTest.class,
-	   HomePageTest.class
+	   HomePageTest.class,
+	   PlanViewTest.class
 	})
 	
 	public class TestSuite  
