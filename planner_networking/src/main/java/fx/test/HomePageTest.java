@@ -70,13 +70,11 @@ public class HomePageTest extends ApplicationTest
 		this.stage = stage;
 		
 		registry = LocateRegistry.createRegistry(1077);
-		System.out.println("Start");
 		ServerImplementation server = ServerImplementation.load();
 		
 		actualServer = server;
 		Server stub = (Server) UnicastRemoteObject.exportObject(server, 0);
 		registry.rebind("PlannerServer", stub);
-		System.out.println("Start");
 		
 		this.testServer = (Server) registry.lookup("PlannerServer");
 		
@@ -84,7 +82,6 @@ public class HomePageTest extends ApplicationTest
 		String username = "user";
 		testClient.login(username, "user");
 			
-		System.out.println("Start");
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/fx/homePageView/homePageView.fxml"));
 		Scene s = new Scene(loader.load());
