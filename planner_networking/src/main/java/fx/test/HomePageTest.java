@@ -98,7 +98,7 @@ public class HomePageTest extends ApplicationTest
 		cont.setUser(username);
 		
 		cont.setPrimaryStage(stage);
-		
+		stage.setWidth(500);
 		stage.setScene(s);
 		stage.show();
 		

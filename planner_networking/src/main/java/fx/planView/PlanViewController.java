@@ -144,7 +144,7 @@ public class PlanViewController
 		cont.setTestClient(this.testClient);
 		cont.setPrimaryStage(primaryStage);
 
-		
+		primaryStage.setWidth(500);
 		primaryStage.getScene().setRoot(loader.load());
 	}
 	
@@ -167,7 +167,7 @@ public class PlanViewController
 			cont.setDept(dept.getText());
 			cont.setUser(user.getText());
 		
-			primaryStage.setWidth(800);
+			primaryStage.setWidth(500);
 			primaryStage.getScene().setRoot(mainView);
 		}
 		
