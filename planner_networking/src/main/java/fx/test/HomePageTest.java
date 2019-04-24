@@ -127,6 +127,8 @@ public class HomePageTest extends ApplicationTest
 		
 		clickOn("#submit");
 		
+		assertEquals("2019", cont.getTestClient().getCurrPlanFile().getYear());
+		
 	}
 
 	
