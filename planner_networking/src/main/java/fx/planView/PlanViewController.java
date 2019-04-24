@@ -171,7 +171,7 @@ public class PlanViewController
 			cont.setDept(dept.getText());
 			cont.setUser(user.getText());
 		
-			primaryStage.setWidth(500);
+		
 			primaryStage.getScene().setRoot(mainView);
 		}
 		
