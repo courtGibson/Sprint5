@@ -128,6 +128,8 @@ public class HomePageTest extends ApplicationTest
 		clickOn("#submit");
 		
 	}
+	
+
 
 	
 	
@@ -158,10 +160,20 @@ public class HomePageTest extends ApplicationTest
 	@Test
 	public void testLabels()
 	{
-		// fxml doesn't have the labels??
-		// should we just take it out or try to figure it out?
+		// labels based on what client is logged on
+		assertEquals(getTextLabel("#user"), "user");
+		assertEquals(getTextLabel("#dept"), "default");
+		
+		
 	}
 	
+	String getTextLabel(String label)
+	{
+
+		Label thisLabel = (Label) lookup(label).query();
+		return thisLabel.textProperty().get();
+
+	}
 	
 	
 	
